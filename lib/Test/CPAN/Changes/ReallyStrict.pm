@@ -20,7 +20,7 @@ package Test::CPAN::Changes::ReallyStrict;
 This module is for people who want their Changes file to be 1:1 Identical to how it would be
 if they'd generated it programmatically with CPAN::Changes.
 
-This is not for the faint of heart, and will whine about even minor changes of whitespace.
+This is not for the faint of heart, and will whine about even minor changes of white-space.
 
 You are also at upstreams mercy as to what a changes file looks like, and in order to keep this test
 happy, you'll have to update your whole changes file if upstream changes how they format things.
@@ -30,20 +30,22 @@ happy, you'll have to update your whole changes file if upstream changes how the
 use CPAN::Changes;
 use Test::Builder;
 
-my $Test       = Test::Builder->new();
+my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
 
 sub import {
-  my $self = shift;
+  my ( $self, @args ) = @_;
 
   my $caller = caller;
   {
+    ## no critic (ProhibitNoStrict);
     no strict 'refs';
     *{ $caller . '::changes_ok' }      = \&changes_ok;
     *{ $caller . '::changes_file_ok' } = \&changes_file_ok;
   }
-  $Test->exported_to($caller);
-  $Test->plan(@_);
+  $TEST->exported_to($caller);
+  $TEST->plan(@args);
+  return 1;
 }
 
 sub _config {
@@ -55,11 +57,24 @@ sub _config {
   # force boolean context.
   $config->{delete_empty_groups} = !!$config->{delete_empty_groups};
   $config->{keep_comparing}      = !!$config->{keep_comparing};
-  if( defined $config->{next_style} and $config->{next_style} = 'dzil' ){
-    $config->{next_token} = qr/{{\$NEXT}}/,
+  if ( defined $config->{next_style} and $config->{next_style} = 'dzil' ) {
+    $config->{next_token} = qr/{{\$NEXT}}/;
   }
 
   return $config;
+}
+
+sub changes_ok {
+  my ( @args ) = @_;
+  $TEST->plan( tests => 5 );
+  return changes_file_ok( undef, @args );
+}
+
+# For testing.
+sub _real_changes_ok {
+  my ( $tester, $state ) = @_ ;
+  $tester->plan( tests => 5 );
+  return _real_changes_file_ok( $tester, $state );
 }
 
 sub changes_file_ok {
@@ -67,8 +82,11 @@ sub changes_file_ok {
   $file ||= 'Changes';
   my $real_config = _config($config);
   $config->{filename} = $file;
-  _real_changes_file_ok( $Test, $real_config );
+  return _real_changes_file_ok( $TEST, $real_config );
 }
+
+# Factoring design split so testing can inject a test::builder dummy
+
 sub _real_changes_file_ok {
   my ( $tester, $state ) = @_;
   return unless _test_load( $tester, $state );
@@ -80,22 +98,24 @@ sub _real_changes_file_ok {
   return unless _test_lines( $tester, $state );
   return 1;
 }
+
 sub _test_load {
   my ( $tester, $state ) = @_;
 
   my @extra;
-  if( defined $state->{next_token} ){
+  if ( defined $state->{next_token} ) {
     @extra = ( next_token => $state->{next_token} );
   }
-  my ( $error, $changes );
+  my ( $error, $changes, $success );
   {
-    local $@;
+    ## no critic ( ProhibitPunctuationVars )
+    local $@ = undef;
 
-    eval { $changes = CPAN::Changes->load( $state->{filename}, @extra );  };
+    $success = eval { $changes = CPAN::Changes->load( $state->{filename}, @extra ); 1 };
     $error = $@;
   }
 
-  if ( not $error ) {
+  if ( not $error and $success ) {
     $tester->ok( 1, $state->{filename} . ' is loadable' );
     $state->{changes} = $changes;
     return 1;
@@ -108,6 +128,7 @@ sub _test_load {
 
 sub _test_has_releases {
   my ( $tester, $state ) = @_;
+
   # dump [ '_test_has_releases' , $tester, $state ];
   my (@releases) = $state->{changes}->releases;
   if (@releases) {
@@ -121,7 +142,7 @@ sub _test_has_releases {
 sub _test_release_date {
   my ( $tester, $state ) = @_;
   return 1 if not defined $state->{release}->date and defined $state->{next_token};
-  return 1 if $state->{release}->date =~ m[^${CPAN::Changes::W3CDTF_REGEX}\s*$];
+  return 1 if $state->{release}->date =~ m/^${CPAN::Changes::W3CDTF_REGEX}\s*$/;
   $tester->ok( 0, $state->{file} . ' contains an invalid release date' );
   $tester->diag( '  ERR: ' . $state->{release}->date );
   return;
@@ -131,7 +152,7 @@ sub _test_release_version {
   my ( $tester, $state ) = @_;
   return 1 if not defined $state->{release}->version and defined $state->{next_token};
   return 1 if defined $state->{next_token} and $state->{release}->version =~ $state->{next_token};
-  return 1 if ( $state->{release}->version =~ m[$version_re] );
+  return 1 if ( $state->{release}->version =~ m/$version_re/ );
   $tester->ok( 0, $state->{filename} . ' contains an invalid release version number' );
   $tester->diag( '  ERR: ' . $state->{release}->version );
   return;
@@ -140,6 +161,7 @@ sub _test_release_version {
 sub _test_releases {
   my ( $tester, $state ) = @_;
   for ( $state->{changes}->releases ) {
+    ## no critic ( ProhibitLocalVars)
     local $state->{release} = $_;
     return unless _test_release_date( $tester, $state );
     return unless _test_release_version( $tester, $state );
@@ -151,6 +173,7 @@ sub _test_releases {
 
 sub _stash_original_content {
   my ( $tester, $state ) = @_;
+  ## no critic (ProhibitPunctuationVars)
 
   my $fh;
   if ( not open $fh, '<', $state->{filename} ) {
@@ -158,8 +181,11 @@ sub _stash_original_content {
     $tester->diag( 'Error ' . $! );
     return;
   }
-  local $/ = undef;
-  my $str = <$fh>;
+  my $str = do {
+    local $/ = undef;
+    scalar <$fh>;
+  };
+  close $fh or $tester->diag( 'Warning: Error Closing ' . $state->{filename} );
 
   my @lines = split /\n/, $str;
 
@@ -174,7 +200,9 @@ sub _prune {
   my ( $rval, $error );
 
   {
-    local $@;
+    ## no critic ( ProhibitPunctuationVars )
+
+    local $@ = undef;
     $rval = eval { CPAN::Changes->VERSION('0.14'); 1 };
     $error = $@;
   }
@@ -205,13 +233,22 @@ sub _stash_serialized_content {
 
 sub _test_line {
   my ( $tester, $state ) = @_;
-  return 1 if defined $state->{line}->{original} and defined $state->{line}->{generated} and $state->{line}->{original} eq $state->{line}->{generated};
+  return 1
+    if defined $state->{line}->{original}
+      and defined $state->{line}->{generated}
+      and $state->{line}->{original} eq $state->{line}->{generated};
   if ( not $state->{had_first_line_failure} ) {
     $tester->ok( 0, 'Lines differ at line ' . $state->{line}->{no} );
     $state->{had_first_line_failure} = 1;
   }
-  $tester->diag( '[' . $state->{line}->{no} . '] Expected: ' . ( defined $state->{line}->{generated} ? '>' . $state->{line}->{generated}  . '<' : 'not defined' ) );
-  $tester->diag( '[' . $state->{line}->{no} . '] Got     : ' . ( defined $state->{line}->{original} ? '>' . $state->{line}->{original}  . '<' : 'not defined' ) );
+  $tester->diag( '['
+      . $state->{line}->{no}
+      . '] Expected: '
+      . ( defined $state->{line}->{generated} ? '>' . $state->{line}->{generated} . '<' : 'not defined' ) );
+  $tester->diag( '['
+      . $state->{line}->{no}
+      . '] Got     : '
+      . ( defined $state->{line}->{original} ? '>' . $state->{line}->{original} . '<' : 'not defined' ) );
   return;
 }
 
@@ -222,20 +259,19 @@ sub _test_lines {
   my (@generated) = @{ $state->{generated_lines} };
 
   for ( 0 .. $#original ) {
+    ## no critic ( ProhibitLocalVars )
     local $state->{line} = { original => $original[$_], generated => $generated[$_], no => $_ };
     return if not _test_line( $tester, $state ) and not $state->{keep_comparing};
   }
-  if( $state->{keep_comparing} and not $state->{had_first_line_failure} ){
+  if ( $state->{keep_comparing} and not $state->{had_first_line_failure} ) {
     $tester->ok( 1, 'All lines in original match generated' );
     return 1;
   }
 
-  if( not $state->{keep_comparing} ){
+  if ( not $state->{keep_comparing} ) {
     return 1;
   }
   return;
 }
-
-
 
 1;
