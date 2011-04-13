@@ -66,14 +66,14 @@ sub _config {
 
 sub changes_ok {
   my ( @args ) = @_;
-  $TEST->plan( tests => 5 );
+  $TEST->plan( tests => 4 );
   return changes_file_ok( undef, @args );
 }
 
 # For testing.
 sub _real_changes_ok {
   my ( $tester, $state ) = @_ ;
-  $tester->plan( tests => 5 );
+  $tester->plan( tests => 4 );
   return _real_changes_file_ok( $tester, $state );
 }
 
@@ -81,7 +81,7 @@ sub changes_file_ok {
   my ( $file, $config ) = @_;
   $file ||= 'Changes';
   my $real_config = _config($config);
-  $config->{filename} = $file;
+  $real_config->{filename} = $file;
   return _real_changes_file_ok( $TEST, $real_config );
 }
 
@@ -89,6 +89,7 @@ sub changes_file_ok {
 
 sub _real_changes_file_ok {
   my ( $tester, $state ) = @_;
+  #die q{Internal error, filename should be defined} if ( not defined $state->{filename} );
   return unless _test_load( $tester, $state );
   return unless _test_has_releases( $tester, $state );
   return unless _test_releases( $tester, $state );
