@@ -1,7 +1,5 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
-{{$NEXT}}
-
 0.1.0 2011-04-13T20:36:43Z
  - First version.
  - Does Self-Testing for now with a hard-coded example script.

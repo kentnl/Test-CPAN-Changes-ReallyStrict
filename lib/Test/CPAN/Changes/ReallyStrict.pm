@@ -2,30 +2,13 @@ use strict;
 use warnings;
 
 package Test::CPAN::Changes::ReallyStrict;
+BEGIN {
+  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.0';
+}
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
 
-=head1 SYNOPSIS
 
-  use Test::More;
-  eval 'use Test::CPAN::Changes::ReallyStrict';
-  plan skip_all => 'Test::CPAN::Changes::ReallyStrict required for this test' if $@;
-  changes_ok();
-  done_testing();
-
-=cut
-
-=head1 DESCRIPTION
-
-This module is for people who want their Changes file to be 1:1 Identical to how it would be
-if they'd generated it programmatically with CPAN::Changes.
-
-This is not for the faint of heart, and will whine about even minor changes of white-space.
-
-You are also at upstreams mercy as to what a changes file looks like, and in order to keep this test
-happy, you'll have to update your whole changes file if upstream changes how they format things.
-
-=cut
 
 use CPAN::Changes;
 use Test::Builder;
@@ -64,17 +47,6 @@ sub _config {
   return $config;
 }
 
-=efunc changes_ok
-
-  changes_ok();
-
-  changes_ok({
-    delete_empty_groups => 1,
-    keep_comparing => 1,
-    next_style => 'dzil'
-  });
-
-=cut
 
 sub changes_ok {
   my (@args) = @_;
@@ -89,19 +61,6 @@ sub _real_changes_ok {
   return _real_changes_file_ok( $tester, $state );
 }
 
-=efunc changes_file_ok
-
-  changes_file_ok();
-
-  changes_file_ok('ChangeLog');
-
-  changes_ok('ChangeLog', {
-    delete_empty_groups => 1,
-    keep_comparing => 1,
-    next_style => 'dzil'
-  });
-
-=cut
 
 sub changes_file_ok {
   my ( $file, $config ) = @_;
@@ -303,3 +262,70 @@ sub _test_lines {
 }
 
 1;
+
+__END__
+=pod
+
+=head1 NAME
+
+Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it would if it was machine generated.
+
+=head1 VERSION
+
+version 0.1.0
+
+=head1 SYNOPSIS
+
+  use Test::More;
+  eval 'use Test::CPAN::Changes::ReallyStrict';
+  plan skip_all => 'Test::CPAN::Changes::ReallyStrict required for this test' if $@;
+  changes_ok();
+  done_testing();
+
+=head1 DESCRIPTION
+
+This module is for people who want their Changes file to be 1:1 Identical to how it would be
+if they'd generated it programmatically with CPAN::Changes.
+
+This is not for the faint of heart, and will whine about even minor changes of white-space.
+
+You are also at upstreams mercy as to what a changes file looks like, and in order to keep this test
+happy, you'll have to update your whole changes file if upstream changes how they format things.
+
+=head1 EXPORTED FUNCTIONS
+
+=head2 changes_ok
+
+  changes_ok();
+
+  changes_ok({
+    delete_empty_groups => 1,
+    keep_comparing => 1,
+    next_style => 'dzil'
+  });
+
+=head2 changes_file_ok
+
+  changes_file_ok();
+
+  changes_file_ok('ChangeLog');
+
+  changes_ok('ChangeLog', {
+    delete_empty_groups => 1,
+    keep_comparing => 1,
+    next_style => 'dzil'
+  });
+
+=head1 AUTHOR
+
+Kent Fredric <kentnl@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Kent Fredric <kentnl@cpan.org>.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+
