@@ -64,18 +64,44 @@ sub _config {
   return $config;
 }
 
+=efunc changes_ok
+
+  changes_ok();
+
+  changes_ok({
+    delete_empty_groups => 1,
+    keep_comparing => 1,
+    next_style => 'dzil'
+  });
+
+=cut
+
 sub changes_ok {
-  my ( @args ) = @_;
+  my (@args) = @_;
   $TEST->plan( tests => 4 );
   return changes_file_ok( undef, @args );
 }
 
 # For testing.
 sub _real_changes_ok {
-  my ( $tester, $state ) = @_ ;
+  my ( $tester, $state ) = @_;
   $tester->plan( tests => 4 );
   return _real_changes_file_ok( $tester, $state );
 }
+
+=efunc changes_file_ok
+
+  changes_file_ok();
+
+  changes_file_ok('ChangeLog');
+
+  changes_ok('ChangeLog', {
+    delete_empty_groups => 1,
+    keep_comparing => 1,
+    next_style => 'dzil'
+  });
+
+=cut
 
 sub changes_file_ok {
   my ( $file, $config ) = @_;
@@ -89,6 +115,7 @@ sub changes_file_ok {
 
 sub _real_changes_file_ok {
   my ( $tester, $state ) = @_;
+
   #die q{Internal error, filename should be defined} if ( not defined $state->{filename} );
   return unless _test_load( $tester, $state );
   return unless _test_has_releases( $tester, $state );
