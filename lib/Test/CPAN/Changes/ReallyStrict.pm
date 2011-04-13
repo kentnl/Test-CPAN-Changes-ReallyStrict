@@ -4,11 +4,15 @@ package Test::CPAN::Changes::ReallyStrict;
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
 
-use Test::More;
-eval 'use Test::CPAN::Changes::ReallyStrict';
-plan skip_all => 'Test::CPAN::Changes::ReallyStrict required for this test' if $@;
-changes_ok();
-done_testing();
+=head1 SYNOPSIS
+
+  use Test::More;
+  eval 'use Test::CPAN::Changes::ReallyStrict';
+  plan skip_all => 'Test::CPAN::Changes::ReallyStrict required for this test' if $@;
+  changes_ok();
+  done_testing();
+
+=cut
 
 =head1 DESCRIPTION
 
