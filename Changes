@@ -1,6 +1,11 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
 {{$NEXT}}
+ [BugFix]
+ - Depend on CPAN::Changes version 0.16 which exposes the regex we consume.
+
+ [Dependencies]
+ - CPAN::Changes now version 0.16 ( 0.160.0 )
 
 0.1.0 2011-04-13T20:36:43Z
  - First version.
