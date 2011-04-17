@@ -23,13 +23,13 @@ my %module_build_args = (
     'Kent Fredric <kentnl@cpan.org>'
   ],
   'dist_name' => 'Test-CPAN-Changes-ReallyStrict',
-  'dist_version' => '0.1.0',
+  'dist_version' => '0.1.1',
   'license' => 'perl',
   'module_name' => 'Test::CPAN::Changes::ReallyStrict',
   'recommends' => {},
   'recursive_test_files' => 1,
   'requires' => {
-    'CPAN::Changes' => '0',
+    'CPAN::Changes' => '0.16',
     'Test::Builder' => '0'
   },
   'script_files' => []

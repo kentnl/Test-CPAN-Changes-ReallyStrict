@@ -3,14 +3,14 @@ use warnings;
 
 package Test::CPAN::Changes::ReallyStrict;
 BEGIN {
-  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.0';
+  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.1';
 }
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
 
 
 
-use CPAN::Changes;
+use CPAN::Changes 0.16;
 use Test::Builder;
 
 my $TEST       = Test::Builder->new();
@@ -272,7 +272,7 @@ Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it 
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
 
 =head1 SYNOPSIS
 

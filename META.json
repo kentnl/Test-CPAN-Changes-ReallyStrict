@@ -37,7 +37,7 @@
       },
       "runtime" : {
          "requires" : {
-            "CPAN::Changes" : 0,
+            "CPAN::Changes" : "0.16",
             "Test::Builder" : 0
          }
       },
@@ -55,7 +55,7 @@
    "provides" : {
       "Test::CPAN::Changes::ReallyStrict" : {
          "file" : "lib/Test/CPAN/Changes/ReallyStrict.pm",
-         "version" : "v0.1.0"
+         "version" : "v0.1.1"
       }
    },
    "release_status" : "stable",
@@ -67,7 +67,7 @@
          "web" : "http://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict/tree"
       }
    },
-   "version" : "0.1.0",
+   "version" : "0.1.1",
    "x_BuiltWith" : {
       "modules" : {
          "CPAN::Changes" : "0.16",

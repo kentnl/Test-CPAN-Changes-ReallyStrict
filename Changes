@@ -1,5 +1,17 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
+0.1.1 2011-04-17T00:38:07Z
+ [BugFix]
+ - Depend on CPAN::Changes version 0.16 which exposes the regex we consume.
+
+ [Dependencies]
+ - CPAN::Changes now version 0.16 ( 0.160.0 )
+
+ [Features]
+ - Add utils for migrating/tidying Changes files. zuluize.pl
+   de-dist-zilla-izes it, and normalize runs it through CPAN::Changes to
+   tidy it, both reading Changes and writing Changes.out
+
 0.1.0 2011-04-13T20:36:43Z
  - First version.
  - Does Self-Testing for now with a hard-coded example script.

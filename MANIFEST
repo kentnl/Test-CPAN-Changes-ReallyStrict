@@ -25,4 +25,6 @@ t/release-eol.t
 t/release-kwalitee.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
+util/normalize.pl
+util/zuluize.pl
 weaver.ini
