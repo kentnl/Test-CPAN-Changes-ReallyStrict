@@ -3,14 +3,14 @@ use warnings;
 
 package Test::CPAN::Changes::ReallyStrict;
 BEGIN {
-  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.1';
+  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.2';
 }
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
 
 
 
-use CPAN::Changes 0.16;
+use CPAN::Changes 0.17;
 use Test::Builder;
 
 my $TEST       = Test::Builder->new();
@@ -184,22 +184,6 @@ sub _prune {
   my ( $tester, $state ) = @_;
   return 1 unless $state->{delete_empty_groups};
 
-  my ( $rval, $error );
-
-  {
-    ## no critic ( ProhibitPunctuationVars )
-
-    local $@ = undef;
-    $rval = eval { CPAN::Changes->VERSION('0.14'); 1 };
-    $error = $@;
-  }
-
-  if ( $error or not $rval ) {
-    $tester->ok( 0, 'delete_empty_groups not supported on CPAN::Changes prior to 0.14' );
-    $tester->diag("CPAN::Changes Version: $CPAN::Changes::VERSION");
-    return;
-  }
-
   $state->{changes}->delete_empty_groups();
 
   return 1;
@@ -272,7 +256,7 @@ Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it 
 
 =head1 VERSION
 
-version 0.1.1
+version 0.1.2
 
 =head1 SYNOPSIS
 

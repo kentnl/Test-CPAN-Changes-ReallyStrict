@@ -22,17 +22,17 @@ name: Test-CPAN-Changes-ReallyStrict
 provides:
   Test::CPAN::Changes::ReallyStrict:
     file: lib/Test/CPAN/Changes/ReallyStrict.pm
-    version: v0.1.1
+    version: v0.1.2
 requires:
-  CPAN::Changes: 0.16
+  CPAN::Changes: 0.17
   Test::Builder: 0
 resources:
   homepage: http://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict/tree
   repository: git://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict.git
-version: 0.1.1
+version: 0.1.2
 x_BuiltWith:
   modules:
-    CPAN::Changes: 0.16
+    CPAN::Changes: 0.17
     Dist::Zilla::PluginBundle::Author::KENTNL: 1.0.6
     Dist::Zilla::PluginBundle::Author::KENTNL::Lite: 'NA(possibly not installed)'
     File::Temp: 0.22
@@ -42,12 +42,12 @@ x_BuiltWith:
     Test::MockObject: 1.09
     Test::More: 0.98
   perl:
-    original: v5.12.3
+    original: v5.14.0
     qv: 1
     version:
       - 5
-      - 12
-      - 3
+      - 14
+      - 0
   platform: linux
   uname: 'Linux 2.6.38-gentoo x86_64 GenuineIntel GNU/Linux'
 x_Dist_Zilla:
@@ -159,7 +159,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Test::CPAN::Changes
       name: '@Author::KENTNL/Test::CPAN::Changes'
-      version: 0.003
+      version: 0.004
     -
       class: Dist::Zilla::Plugin::CompileTests
       name: '@Author::KENTNL/CompileTests'

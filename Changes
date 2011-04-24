@@ -1,5 +1,21 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
+0.1.2 2011-04-24T13:33:38Z
+ [Dependencies]
+ - Depend on Version 0.17 which contains the surplus whitespace fix.
+
+ [Internals]
+ - Redundant code that handled <=0.14 versions removed as 0.17 is now a
+   mandatory pre-requisite.
+
+ [Tests]
+ - Updated NEXT token extra whitespace test to adapt to changes in
+   CPAN::Changes 0.17
+
+ [Utils::Internals]
+ - normalize.pl now uses CPAN::Changes 0.17 instead of hacking the output
+   manually.
+
 0.1.1 2011-04-17T00:38:07Z
  [BugFix]
  - Depend on CPAN::Changes version 0.16 which exposes the regex we consume.

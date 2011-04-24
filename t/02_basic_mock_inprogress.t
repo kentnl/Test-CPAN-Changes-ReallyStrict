@@ -25,6 +25,11 @@ $mock->mock(
 
 use Test::CPAN::Changes::ReallyStrict;
 
+#
+# This tests for the behaviour that, a file with a {{NEXT}}
+# token in it is deemed "invalid" if the next-token option is
+# not parsed to the validator.
+#
 ok(
   !Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
     $mock,

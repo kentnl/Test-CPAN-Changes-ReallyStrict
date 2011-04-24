@@ -23,10 +23,19 @@ $mock->mock(
   }
 );
 
+#
+# This test tests the behaviour of Changes files with {{$NEXT}} in them.
+# Prior to CPAN::Changes 0.17, CPAN::Changes emitted extra whitespace.
+#
+# This tests for this behaviour being sufficient to cause a problem.
+#
+# However, as of 0.17 it is no longer a problem, but this test is still
+# here in case other inconsitencies crop up.
+#
 use Test::CPAN::Changes::ReallyStrict;
 
 ok(
-  !Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
+  Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
     $mock,
     {
       delete_empty_groups => undef,
@@ -35,12 +44,12 @@ ok(
       next_token          => qr/{{\$NEXT}}/
     }
   ),
-  "Expected bad file is bad ( In progress"
+  "Expected {NEXT} file is good ( Fixed in CPAN::Changes 0.17 )"
   )
   or do {
   note explain \@events;
   };
 
-is( scalar @events, 7, "There are 7 events sent to the test system with this option on" ) or note explain \@events;
+is( scalar @events, 5, 'There are 5 events sent to the test system with this option on' ) or note explain \@events;
 
 done_testing;
