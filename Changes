@@ -8,6 +8,10 @@ Release history for Test-CPAN-Changes-ReallyStrict
  - Redundant code that handled <=0.14 versions removed as 0.17 is now a
    mandatory pre-requisite.
 
+ [Tests]
+ - Updated NEXT token extra whitespace test to adapt to changes in
+   CPAN::Changes 0.17
+
  [Utils::Internals]
  - normalize.pl now uses CPAN::Changes 0.17 instead of hacking the output
    manually.
