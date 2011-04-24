@@ -1,11 +1,12 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
 {{$NEXT}}
- [Internals]
- - Redundant code that handled <=0.14 versions removed as 0.17 is now a mandatory pre-requisite.
-
  [Dependencies]
  - Depend on Version 0.17 which contains the surplus whitespace fix.
+
+ [Internals]
+ - Redundant code that handled <=0.14 versions removed as 0.17 is now a
+   mandatory pre-requisite.
 
 0.1.1 2011-04-17T00:38:07Z
  [BugFix]
