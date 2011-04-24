@@ -1,5 +1,9 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
+0.1.3 2011-04-24T13:37:34Z
+ - No changes, just this time hopefully the twitter plugin will work
+   because  I actually have LWP::Protocol::https installed.
+
 0.1.2 2011-04-24T13:33:38Z
  [Dependencies]
  - Depend on Version 0.17 which contains the surplus whitespace fix.
