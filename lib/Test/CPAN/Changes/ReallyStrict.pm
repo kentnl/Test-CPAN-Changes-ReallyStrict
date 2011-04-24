@@ -27,7 +27,7 @@ happy, you'll have to update your whole changes file if upstream changes how the
 
 =cut
 
-use CPAN::Changes 0.16;
+use CPAN::Changes 0.17;
 use Test::Builder;
 
 my $TEST       = Test::Builder->new();

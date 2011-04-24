@@ -1,6 +1,8 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
 {{$NEXT}}
+ [Dependencies]
+ - Depend on Version 0.17 which contains the surplus whitespace fix.
 
 0.1.1 2011-04-17T00:38:07Z
  [BugFix]
