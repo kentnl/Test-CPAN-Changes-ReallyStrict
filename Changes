@@ -1,6 +1,8 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
 {{$NEXT}}
+ - No changes, just this time hopefully the twitter plugin will work
+   because  I actually have LWP::Protocol::https installed.
 
 0.1.2 2011-04-24T13:33:38Z
  [Dependencies]
