@@ -1,6 +1,8 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
 {{$NEXT}}
+
+0.1.4 2012-02-03T03:51:16Z
  - Maintenance Release
 
  [Dependencies::Changed]
