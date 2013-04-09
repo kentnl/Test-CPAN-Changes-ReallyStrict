@@ -6,7 +6,7 @@ BEGIN {
   $Test::CPAN::Changes::ReallyStrict::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.4';
+  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.5';
 }
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
@@ -251,6 +251,7 @@ sub _test_lines {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -259,7 +260,7 @@ Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it 
 
 =head1 VERSION
 
-version 0.1.4
+version 0.1.5
 
 =head1 SYNOPSIS
 
@@ -309,10 +310,9 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
