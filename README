@@ -3,7 +3,7 @@ NAME
     like it would if it was machine generated.
 
 VERSION
-    version 0.1.5
+    version 0.001006
 
 SYNOPSIS
       use Test::More;
