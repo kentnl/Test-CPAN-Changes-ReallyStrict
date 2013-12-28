@@ -6,7 +6,7 @@ BEGIN {
   $Test::CPAN::Changes::ReallyStrict::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::CPAN::Changes::ReallyStrict::VERSION = 'v0.1.6';
+  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.6';
 }
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
@@ -260,7 +260,7 @@ Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it 
 
 =head1 VERSION
 
-version v0.1.6
+version 0.1.6
 
 =head1 SYNOPSIS
 

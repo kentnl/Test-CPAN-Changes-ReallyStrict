@@ -30,7 +30,7 @@ resources:
   bugtracker: https://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict/issues
   homepage: https://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict
   repository: https://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict.git
-version: v0.1.6
+version: 0.1.6
 x_BuiltWith:
   modules:
     CPAN::Changes: 0.27
@@ -113,7 +113,7 @@ x_Dist_Zilla:
       config:
         Dist::Zilla::Role::Version::Sanitize:
           mantissa: 6
-          normal_form: normal
+          normal_form: normal_3
       name: '@Author::KENTNL/Git::NextVersion::Sanitized'
       version: 0.001000
     -
