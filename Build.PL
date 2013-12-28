@@ -18,7 +18,7 @@ my %module_build_args = (
     "Kent Fredric <kentnl\@cpan.org>"
   ],
   "dist_name" => "Test-CPAN-Changes-ReallyStrict",
-  "dist_version" => "0.001006",
+  "dist_version" => "v0.1.6",
   "license" => "perl",
   "module_name" => "Test::CPAN::Changes::ReallyStrict",
   "recommends" => {},

@@ -100,7 +100,7 @@
    "provides" : {
       "Test::CPAN::Changes::ReallyStrict" : {
          "file" : "lib/Test/CPAN/Changes/ReallyStrict.pm",
-         "version" : "0.001006"
+         "version" : "v0.1.6"
       }
    },
    "release_status" : "stable",
@@ -115,7 +115,7 @@
          "web" : "https://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict"
       }
    },
-   "version" : "0.001006",
+   "version" : "v0.1.6",
    "x_BuiltWith" : {
       "modules" : {
          "CPAN::Changes" : "0.27",
@@ -204,7 +204,7 @@
             "config" : {
                "Dist::Zilla::Role::Version::Sanitize" : {
                   "mantissa" : 6,
-                  "normal_form" : "numify"
+                  "normal_form" : "normal"
                }
             },
             "name" : "@Author::KENTNL/Git::NextVersion::Sanitized",
