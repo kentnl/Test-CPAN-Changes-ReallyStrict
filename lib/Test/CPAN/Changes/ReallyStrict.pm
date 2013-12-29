@@ -29,6 +29,7 @@ happy, you'll have to update your whole changes file if upstream changes how the
 
 use CPAN::Changes 0.17;
 use Test::Builder;
+use Test::CPAN::Changes::ReallyStrict::Object;
 
 my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
@@ -78,7 +79,6 @@ sub _config {
 
 sub changes_ok {
   my (@args) = @_;
-  $TEST->plan( tests => 4 );
   return changes_file_ok( undef, @args );
 }
 
@@ -108,13 +108,26 @@ sub changes_file_ok {
   $file ||= 'Changes';
   my $real_config = _config($config);
   $real_config->{filename} = $file;
-  return _real_changes_file_ok( $TEST, $real_config );
+  my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
+    {
+      testbuilder => $TEST,
+      %{$real_config}
+    }
+  );
+  return $obj->changes_ok;
 }
 
 # Factoring design split so testing can inject a test::builder dummy
 
 sub _real_changes_file_ok {
   my ( $tester, $state ) = @_;
+  my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
+    {
+      testbuilder => $tester,
+      %{$state}
+    }
+  );
+  return $obj->changes_ok;
 
   #die q{Internal error, filename should be defined} if ( not defined $state->{filename} );
   return unless _test_load( $tester, $state );
