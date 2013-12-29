@@ -2,42 +2,25 @@ use strict;
 use warnings;
 
 use Test::More 0.96;
-use Test::MockObject;
 use FindBin;
+use lib "$FindBin::Bin/lib";
+use mocktest;
 
-my $mock = Test::MockObject->new();
-
-my @events;
-
-$mock->mock(
-  'ok' => sub {
-    my ( $self, @args ) = @_;
-    push @events, [ 'ok', @args ];
-  }
-);
-
-$mock->mock(
-  'diag' => sub {
-    my ( $self, @args ) = @_;
-    push @events, [ 'diag', @args ];
-  }
-);
+my $mock = mocktest->new();
 
 use Test::CPAN::Changes::ReallyStrict;
 
-ok(
-  Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
-    $mock,
-    {
-      delete_empty_groups => undef,
-      keep_comparing      => undef,
-      filename            => "$FindBin::Bin/../corpus/Changes_01.txt",
-    }
-  ),
-  "Expected good file is good"
-  )
-  or do {
-  note explain \@events;
-  };
+my $rval = Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
+  $mock,
+  {
+    delete_empty_groups => undef,
+    keep_comparing      => undef,
+    filename            => "$FindBin::Bin/../corpus/Changes_01.txt",
+  }
+);
+
+if ( not ok( $rval, "Expected good file is good" ) ) {
+  note $_ for $mock->ls_events;
+}
 
 done_testing;
