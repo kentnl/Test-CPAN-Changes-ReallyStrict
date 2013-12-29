@@ -277,7 +277,7 @@ if they'd generated it programmatically with CPAN::Changes.
 
 This is not for the faint of heart, and will whine about even minor changes of white-space.
 
-You are also at upstreams mercy as to what a changes file looks like, and in order to keep this test
+You are also at upstream's mercy as to what a changes file looks like, and in order to keep this test
 happy, you'll have to update your whole changes file if upstream changes how they format things.
 
 =head1 EXPORTED FUNCTIONS

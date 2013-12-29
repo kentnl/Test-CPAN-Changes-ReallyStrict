@@ -1,6 +1,6 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
-0.1.6 2013-12-29T06:50:31Z
+0.1.6 2013-12-29T06:51:20Z
  [Bugfix]
  - Attempt to fix tests failing on recent CPAN::Changes
 
