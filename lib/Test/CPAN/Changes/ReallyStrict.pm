@@ -141,7 +141,7 @@ sub _test_release_date {
 sub _test_release_version {
   my ( $tester, $state ) = @_;
   return 1 if not defined $state->{release}->version and defined $state->{next_token};
-  return 1 if defined $state->{next_token} and $state->{release}->version =~ $state->{next_token};
+  return 1 if defined $state->{next_token}           and $state->{release}->version =~ $state->{next_token};
   return 1 if ( $state->{release}->version =~ m/$version_re/ );
   $tester->ok( 0, $state->{filename} . ' contains an invalid release version number' );
   $tester->diag( '  ERR: ' . $state->{release}->version );
@@ -209,8 +209,8 @@ sub _test_line {
   my ( $tester, $state ) = @_;
   return 1
     if defined $state->{line}->{original}
-      and defined $state->{line}->{generated}
-      and $state->{line}->{original} eq $state->{line}->{generated};
+    and defined $state->{line}->{generated}
+    and $state->{line}->{original} eq $state->{line}->{generated};
   if ( not $state->{had_first_line_failure} ) {
     $tester->ok( 0, 'Lines differ at line ' . $state->{line}->{no} );
     $state->{had_first_line_failure} = 1;

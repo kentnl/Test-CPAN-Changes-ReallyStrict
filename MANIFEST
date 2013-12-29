@@ -3,6 +3,9 @@
 .perltidyrc
 Build.PL
 Changes
+Changes.deps
+Changes.deps.all
+Changes.deps.dev
 LICENSE
 MANIFEST
 META.json
@@ -10,6 +13,7 @@ META.yml
 README
 corpus/Changes_01.txt
 corpus/Changes_02.txt
+corpus/Changes_03.txt
 dist.ini
 lib/Test/CPAN/Changes/ReallyStrict.pm
 perlcritic.rc

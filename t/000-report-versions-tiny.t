@@ -48,7 +48,7 @@ sub pmver {
     return sprintf('%-45s => %-10s%-15s%s', $module, $pmver, $wanted, "\n");
 }
 
-eval { $v .= pmver('CPAN::Changes','0.17') };
+eval { $v .= pmver('CPAN::Changes','0.27') };
 eval { $v .= pmver('FindBin','any version') };
 eval { $v .= pmver('Module::Build','0.4203') };
 eval { $v .= pmver('Test::Builder','any version') };
