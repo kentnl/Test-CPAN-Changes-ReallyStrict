@@ -36,5 +36,10 @@ sub subtest {
   return $rval;
 }
 
+sub ls_events {
+  my ($self) = @_;
+  return map { join q[, ], @{$_} } @{ $self->all_events };
+}
+
 1;
 
