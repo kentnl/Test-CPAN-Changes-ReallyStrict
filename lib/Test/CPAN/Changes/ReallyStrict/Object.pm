@@ -30,30 +30,30 @@ use Class::Tiny {
     return CPAN::Changes->load( $self->filename, @extra );
   },
   normalised_lines => sub {
-    my ( $self ) = @_;
+    my ($self) = @_;
     if ( $self->delete_empty_groups ) {
-        $self->changes->delete_empty_groups;
+      $self->changes->delete_empty_groups;
     }
     my $string = $self->changes->serialize;
     return [ split /\n/, $string ];
   },
   source_lines => sub {
-    my ( $self ) = @_;
+    my ($self) = @_;
     my $fh;
     if ( not open $fh, '<', $self->filename ) {
-        $self->testbuilder->ok( 0, $self->filename . ' failed to open' );
-        $self->testbuilder->diag( 'Error ' . $! );
-        return;
+      $self->testbuilder->ok( 0, $self->filename . ' failed to open' );
+      $self->testbuilder->diag( 'Error ' . $! );
+      return;
     }
     my $str = do {
-        local $/ = undef;
-        scalar <$fh>;
+      local $/ = undef;
+      scalar <$fh>;
     };
     close $fh or $self->testbuilder->diag( 'Warning: Error Closing ' . $self->filename );
     return [ split /\n/, $str ];
   },
   delete_empty_groups => sub { },
-  keep_comparing => sub { },
+  keep_comparing      => sub { },
 };
 
 sub changes_ok {
@@ -61,12 +61,13 @@ sub changes_ok {
   my $exi;
   $self->testbuilder->subtest(
     'changes_ok' => sub {
-        return unless $self->loads_ok;
-        return unless $self->has_releases;
-        return unless $self->valid_releases;
-        return unless $self->compare_lines;
-        #$self->testbuilder->ok(1, 'All Subtests for ' . $self->filename . ' done' );
-        $exi = 1;
+      return unless $self->loads_ok;
+      return unless $self->has_releases;
+      return unless $self->valid_releases;
+      return unless $self->compare_lines;
+
+      #$self->testbuilder->ok(1, 'All Subtests for ' . $self->filename . ' done' );
+      $exi = 1;
     }
   );
   return unless $exi;
@@ -138,24 +139,28 @@ sub valid_release_version {
 }
 
 sub valid_releases {
-    my ( $self ) = @_;
-    my $top_exit = 1;
+  my ($self) = @_;
+  my $top_exit = 1;
 
-    $self->testbuilder->subtest('valid releases' => sub {
-        my (@releases) = $self->changes->releases;
-        for my $id ( 0 .. $#releases ) {
-            my ($release) = $releases[$id];
-            my $sub_exit;
-            $self->testbuilder->subtest( 'valid release: ' . $id => sub {
-                return unless $self->valid_release_date( $release, $id );
-                return unless $self->valid_release_version( $release, $id );
-                $sub_exit = 1;
-            });
-            undef $top_exit unless $sub_exit;
-        }
-    });
-    return 1 if $top_exit;
-    return;
+  $self->testbuilder->subtest(
+    'valid releases' => sub {
+      my (@releases) = $self->changes->releases;
+      for my $id ( 0 .. $#releases ) {
+        my ($release) = $releases[$id];
+        my $sub_exit;
+        $self->testbuilder->subtest(
+          'valid release: ' . $id => sub {
+            return unless $self->valid_release_date( $release, $id );
+            return unless $self->valid_release_version( $release, $id );
+            $sub_exit = 1;
+          }
+        );
+        undef $top_exit unless $sub_exit;
+      }
+    }
+  );
+  return 1 if $top_exit;
+  return;
 }
 
 sub compare_line {
@@ -186,30 +191,30 @@ sub compare_line {
 }
 
 sub compare_lines {
-    my ( $self ) = @_;
+  my ($self) = @_;
 
-    my ( @source ) = @{ $self->source_lines };
-    my ( @normalised ) = @{ $self->normalised_lines };
+  my (@source)     = @{ $self->source_lines };
+  my (@normalised) = @{ $self->normalised_lines };
 
-    my $all_lines_passed = 1;
+  my $all_lines_passed = 1;
 
-    $self->testbuilder->subtest(
-        'compare lines source vs normalised' => sub {
-            $self->testbuilder->diag(sprintf "Source: %s, Normalised: %s", $#source, $#normalised );
-            my $failed_already;
-            for ( 0 .. $#source ) {
-                my $line_passed = $self->compare_line( $source[$_], $normalised[$_], $_, $failed_already );
-                if ( not $line_passed ) {
-                    $failed_already = 1;
-                    undef $all_lines_passed;
-                    if ( not $self->keep_comparing ) {
-                        last;
-                    }
-                }
-            }
+  $self->testbuilder->subtest(
+    'compare lines source vs normalised' => sub {
+      $self->testbuilder->diag( sprintf "Source: %s, Normalised: %s", $#source, $#normalised );
+      my $failed_already;
+      for ( 0 .. $#source ) {
+        my $line_passed = $self->compare_line( $source[$_], $normalised[$_], $_, $failed_already );
+        if ( not $line_passed ) {
+          $failed_already = 1;
+          undef $all_lines_passed;
+          if ( not $self->keep_comparing ) {
+            last;
+          }
         }
-    );
-    return 1 if $all_lines_passed;
-    return;
+      }
+    }
+  );
+  return 1 if $all_lines_passed;
+  return;
 }
 1;
