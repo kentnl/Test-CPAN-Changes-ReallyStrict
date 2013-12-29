@@ -159,29 +159,29 @@ sub valid_releases {
 }
 
 sub compare_line {
-    my ( $self, $source, $normalised, $no, $failed_before ) = @_;
-    if ( not defined $source and not defined $normalised ) {
-        $self->testbuilder->ok(1, "source($no) == normalised($no) : undef vs undef");
-        return 1;
-    }
-    if ( defined $source and not defined $normalised ) {
-        $self->testbuilder->ok(0, "source($no) != normalised($no) : defined vs undef");
-        return;
-    }
-    if ( not defined $source and defined $normalised ) {
-        $self->testbuilder->ok(0, "source($no) != normalised($no) : undef vs defined");
-        return;
-    }
-    if ( $source eq $normalised ) {
-        $self->testbuilder->ok(1, "source($no) == normalised($no) : val eq val");
-        return 1;
-    }
-    if ( not $failed_before ) {
-        $self->testbuilder->ok(0, "Lines differ at $no");
-    }
-    $self->diag(sprintf q{[%s] Expected: >%s<}, $normalised );
-    $self->diag(sprintf q{[%s] Got     : >%s<}, $source  );
+  my ( $self, $source, $normalised, $no, $failed_before ) = @_;
+  if ( not defined $source and not defined $normalised ) {
+    $self->testbuilder->ok( 1, "source($no) == normalised($no) : undef vs undef" );
+    return 1;
+  }
+  if ( defined $source and not defined $normalised ) {
+    $self->testbuilder->ok( 0, "source($no) != normalised($no) : defined vs undef" );
     return;
+  }
+  if ( not defined $source and defined $normalised ) {
+    $self->testbuilder->ok( 0, "source($no) != normalised($no) : undef vs defined" );
+    return;
+  }
+  if ( $source eq $normalised ) {
+    $self->testbuilder->ok( 1, "source($no) == normalised($no) : val eq val" );
+    return 1;
+  }
+  if ( not $failed_before ) {
+    $self->testbuilder->ok( 0, "Lines differ at $no" );
+  }
+  $self->testbuilder->diag( sprintf q{[%s] Expected: >%s<}, $no, $normalised );
+  $self->testbuilder->diag( sprintf q{[%s] Got     : >%s<}, $no, $source );
+  return;
 
 }
 
