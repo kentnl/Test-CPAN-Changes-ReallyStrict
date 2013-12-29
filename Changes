@@ -1,29 +1,39 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
+0.1.6 2013-12-29T06:57:51Z
+ [Bugfix]
+ - Attempt to fix tests failing on recent CPAN::Changes
+
+ [Dependencies::Noteworthy]
+ - CPAN::Changes 0.27 mininum
+ - Newer Module::Build and Test::More
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.1.5, see Changes.deps{,.all,.dev} for
+   details
+ - build: ↑1
+ - configure: ↑1
+ - develop: +45 -3
+ - runtime: ↑1 ↓1
+ - test: ↑1 -2
+
+ [Test]
+ - Use Test::Compile::PerFile
+
 0.1.5 2013-04-09T02:57:17Z
  - Maintenance release for MB 0.4004
 
- [Dependencies::Added / develop requires]
- - Pod::Coverage::TrustPod
- - Test::CPAN::Meta
- - Test::Pod 1.41
- - Test::Pod::Coverage 1.08
- - version 0.9901
-
- [Dependencies::Changed / build requires]
+ [Dependencies::Noteworthy]
  - Module::Build 0.3601 → 0.4004
-
- [Dependencies::Changed / configure requires]
- - Module::Build 0.3601 → 0.4004
-
- [Dependencies::Changed / develop recommends]
- - Dist::Zilla::PluginBundle::Author::KENTNL::Lite 0.01009803 → v1.3.0
-
- [Dependencies::Changed / develop suggests]
- - Dist::Zilla::PluginBundle::Author::KENTNL v1.2.0 → v1.7.2
-
- [Dependencies::Changed / test requires]
  - Test::More 0.96 → 0.98
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.1.4, see Changes.deps{,.all,.dev} for
+   details
+ - build: ↑1
+ - configure: ↑1
+ - develop: +5 ↑2
+ - test: ↑1
 
  [Documentation]
  - Update Copyright year
@@ -38,17 +48,12 @@ Release history for Test-CPAN-Changes-ReallyStrict
 0.1.4 2012-02-03T03:51:16Z
  - Maintenance Release
 
- [Dependencies::Changed]
- - develop suggests : Dist::Zilla::PluginBundle::Author::KENTNL v1.0.0 ->
-   v1.2.0
-
- [Dependencies::New]
- - runtime requires : perl v5.10.0
- - runtime requires : strict
- - runtime requires : warnings
-
- [Dependencies::Removed]
- - test requires : English
+ [Dependencies::Stats]
+ - Dependencies changed since 0.1.3, see Changes.deps{,.all,.dev} for
+   details
+ - develop: ↑1
+ - runtime: +3
+ - test: -1
 
  [Internals]
  - name-spaces provide $AUTHORITY
@@ -65,8 +70,14 @@ Release history for Test-CPAN-Changes-ReallyStrict
    because  I actually have LWP::Protocol::https installed.
 
 0.1.2 2011-04-24T13:33:38Z
- [Dependencies]
- - Depend on Version 0.17 which contains the surplus whitespace fix.
+ [Dependencies::Noteworthy]
+ - Depend on CPAN::Changes Version 0.17 which contains the surplus
+   whitespace fix.
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.1.1, see Changes.deps{,.all,.dev} for
+   details
+ - runtime: ↑1
 
  [Internals]
  - Redundant code that handled <=0.14 versions removed as 0.17 is now a
@@ -84,8 +95,13 @@ Release history for Test-CPAN-Changes-ReallyStrict
  [BugFix]
  - Depend on CPAN::Changes version 0.16 which exposes the regex we consume.
 
- [Dependencies]
+ [Dependencies::Noteworthy]
  - CPAN::Changes now version 0.16 ( 0.160.0 )
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.1.0, see Changes.deps{,.all,.dev} for
+   details
+ - runtime: ↑1
 
  [Features]
  - Add utils for migrating/tidying Changes files. zuluize.pl

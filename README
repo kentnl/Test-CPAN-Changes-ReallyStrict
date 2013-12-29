@@ -3,7 +3,7 @@ NAME
     like it would if it was machine generated.
 
 VERSION
-    version 0.1.5
+    version 0.1.6
 
 SYNOPSIS
       use Test::More;
@@ -20,7 +20,7 @@ DESCRIPTION
     This is not for the faint of heart, and will whine about even minor
     changes of white-space.
 
-    You are also at upstreams mercy as to what a changes file looks like,
+    You are also at upstream's mercy as to what a changes file looks like,
     and in order to keep this test happy, you'll have to update your whole
     changes file if upstream changes how they format things.
 

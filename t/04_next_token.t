@@ -40,7 +40,7 @@ ok(
     {
       delete_empty_groups => undef,
       keep_comparing      => 1,
-      filename            => "$FindBin::Bin/../corpus/Changes_02.txt",
+      filename            => "$FindBin::Bin/../corpus/Changes_03.txt",
       next_token          => qr/{{\$NEXT}}/
     }
   ),

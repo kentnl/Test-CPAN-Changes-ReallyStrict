@@ -6,7 +6,7 @@ BEGIN {
   $Test::CPAN::Changes::ReallyStrict::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.5';
+  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.6';
 }
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
@@ -141,7 +141,7 @@ sub _test_release_date {
 sub _test_release_version {
   my ( $tester, $state ) = @_;
   return 1 if not defined $state->{release}->version and defined $state->{next_token};
-  return 1 if defined $state->{next_token} and $state->{release}->version =~ $state->{next_token};
+  return 1 if defined $state->{next_token}           and $state->{release}->version =~ $state->{next_token};
   return 1 if ( $state->{release}->version =~ m/$version_re/ );
   $tester->ok( 0, $state->{filename} . ' contains an invalid release version number' );
   $tester->diag( '  ERR: ' . $state->{release}->version );
@@ -209,8 +209,8 @@ sub _test_line {
   my ( $tester, $state ) = @_;
   return 1
     if defined $state->{line}->{original}
-      and defined $state->{line}->{generated}
-      and $state->{line}->{original} eq $state->{line}->{generated};
+    and defined $state->{line}->{generated}
+    and $state->{line}->{original} eq $state->{line}->{generated};
   if ( not $state->{had_first_line_failure} ) {
     $tester->ok( 0, 'Lines differ at line ' . $state->{line}->{no} );
     $state->{had_first_line_failure} = 1;
@@ -260,7 +260,7 @@ Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it 
 
 =head1 VERSION
 
-version 0.1.5
+version 0.1.6
 
 =head1 SYNOPSIS
 
@@ -277,7 +277,7 @@ if they'd generated it programmatically with CPAN::Changes.
 
 This is not for the faint of heart, and will whine about even minor changes of white-space.
 
-You are also at upstreams mercy as to what a changes file looks like, and in order to keep this test
+You are also at upstream's mercy as to what a changes file looks like, and in order to keep this test
 happy, you'll have to update your whole changes file if upstream changes how they format things.
 
 =head1 EXPORTED FUNCTIONS

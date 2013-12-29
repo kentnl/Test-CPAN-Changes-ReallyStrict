@@ -40,6 +40,6 @@ ok(
   note explain \@events;
   };
 
-is( scalar @events, 607, "There is 607 events sent to the test system with this option on") or note explain \@events;
+is( scalar @events, 579, "There is 579 events sent to the test system with this option on" ) or note explain \@events;
 
 done_testing;
