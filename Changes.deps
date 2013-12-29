@@ -6,6 +6,7 @@
  - Module::Build 0.4004 → 0.4203
 
  [Changed / runtime requires]
+ - CPAN::Changes 0.17 → 0.27
  - perl v5.10.0 → 5.006
 
  [Changed / test requires]
