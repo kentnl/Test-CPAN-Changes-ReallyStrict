@@ -41,5 +41,10 @@ sub ls_events {
   return map { join q[, ], @{$_} } @{ $self->all_events };
 }
 
+sub num_events {
+  my ($self) = @_;
+  return scalar @{ $self->all_events };
+}
+
 1;
 
