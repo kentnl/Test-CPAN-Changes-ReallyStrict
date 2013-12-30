@@ -82,7 +82,7 @@ x_BuiltWith:
     Dist::Zilla::Plugin::TestRelease: 5.008
     Dist::Zilla::Plugin::Twitter: 0.024
     Dist::Zilla::Plugin::UploadToCPAN: 5.008
-    Dist::Zilla::PluginBundle::Author::KENTNL: 2.007000
+    Dist::Zilla::PluginBundle::Author::KENTNL: 2.007001
     Dist::Zilla::PluginBundle::Author::KENTNL::Lite: 1.7.2
     FindBin: 1.51
     Module::Build: 0.4203

@@ -1,4 +1,19 @@
-0.1.6
+0.2.0
+ [Added / runtime requires]
+ - Class::Tiny
+ - Try::Tiny
+ - utf8
+
+ [Added / test requires]
+ - lib
+
+ [Changed / runtime requires]
+ - perl 5.006 → 5.008
+
+ [Removed / test requires]
+ - Test::MockObject
+
+0.1.6 2013-12-29T06:57:51Z
  [Changed / build requires]
  - Module::Build 0.4004 → 0.4203
 
