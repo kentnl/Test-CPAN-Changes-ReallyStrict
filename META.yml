@@ -5,8 +5,8 @@ author:
 build_requires:
   FindBin: 0
   Module::Build: 0.4203
-  Test::MockObject: 0
   Test::More: 1.001002
+  lib: 0
 configure_requires:
   Module::Build: 0.4203
 dynamic_config: 0
@@ -19,21 +19,28 @@ name: Test-CPAN-Changes-ReallyStrict
 provides:
   Test::CPAN::Changes::ReallyStrict:
     file: lib/Test/CPAN/Changes/ReallyStrict.pm
-    version: v0.1.6
+    version: v0.2.0
+  Test::CPAN::Changes::ReallyStrict::Object:
+    file: lib/Test/CPAN/Changes/ReallyStrict/Object.pm
+    version: v0.2.0
 requires:
   CPAN::Changes: 0.27
+  Class::Tiny: 0
   Test::Builder: 0
-  perl: 5.006
+  Try::Tiny: 0
+  perl: 5.008
   strict: 0
+  utf8: 0
   warnings: 0
 resources:
   bugtracker: https://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict/issues
   homepage: https://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict
   repository: https://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict.git
-version: 0.1.6
+version: 0.2.0
 x_BuiltWith:
   modules:
     CPAN::Changes: 0.27
+    Class::Tiny: 0.014
     Dist::Zilla::Plugin::Authority: 1.006
     Dist::Zilla::Plugin::AutoPrereqs: 5.008
     Dist::Zilla::Plugin::ConfirmRelease: 5.008
@@ -75,7 +82,7 @@ x_BuiltWith:
     Dist::Zilla::Plugin::TestRelease: 5.008
     Dist::Zilla::Plugin::Twitter: 0.024
     Dist::Zilla::Plugin::UploadToCPAN: 5.008
-    Dist::Zilla::PluginBundle::Author::KENTNL: 2.007000
+    Dist::Zilla::PluginBundle::Author::KENTNL: 2.007001
     Dist::Zilla::PluginBundle::Author::KENTNL::Lite: 1.7.2
     FindBin: 1.51
     Module::Build: 0.4203
@@ -84,11 +91,13 @@ x_BuiltWith:
     Test::CPAN::Changes: 0.27
     Test::CPAN::Meta: 0.23
     Test::Kwalitee: 1.17
-    Test::MockObject: 1.20120301
     Test::More: 1.001002
     Test::Pod: 1.48
     Test::Pod::Coverage: 1.08
+    Try::Tiny: 0.18
+    lib: 0.63
     strict: 1.08
+    utf8: 1.13
     version: 0.9904
     warnings: 1.20
   perl:
@@ -213,6 +222,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Test::Compile::PerFile:
           file:
             - lib/Test/CPAN/Changes/ReallyStrict.pm
+            - lib/Test/CPAN/Changes/ReallyStrict/Object.pm
           path_translator: base64_filter
           prefix: t/00-compile
           skip: []

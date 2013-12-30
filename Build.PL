@@ -18,23 +18,26 @@ my %module_build_args = (
     "Kent Fredric <kentnl\@cpan.org>"
   ],
   "dist_name" => "Test-CPAN-Changes-ReallyStrict",
-  "dist_version" => "0.1.6",
+  "dist_version" => "0.2.0",
   "license" => "perl",
   "module_name" => "Test::CPAN::Changes::ReallyStrict",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
     "CPAN::Changes" => "0.27",
+    "Class::Tiny" => 0,
     "Test::Builder" => 0,
-    "perl" => "5.006",
+    "Try::Tiny" => 0,
+    "perl" => "5.008",
     "strict" => 0,
+    "utf8" => 0,
     "warnings" => 0
   },
   "script_files" => [],
   "test_requires" => {
     "FindBin" => 0,
-    "Test::MockObject" => 0,
-    "Test::More" => "1.001002"
+    "Test::More" => "1.001002",
+    "lib" => 0
   }
 );
 
@@ -42,8 +45,8 @@ my %module_build_args = (
 my %fallback_build_requires = (
   "FindBin" => 0,
   "Module::Build" => "0.4203",
-  "Test::MockObject" => 0,
-  "Test::More" => "1.001002"
+  "Test::More" => "1.001002",
+  "lib" => 0
 );
 
 
