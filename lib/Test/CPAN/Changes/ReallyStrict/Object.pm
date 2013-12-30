@@ -310,7 +310,7 @@ B<Default>: C<Changes>
 
 The regular expression to use for C<next_token>
 
-Defaults to C<undef>, or C<{{$NEXT}}> if C<next_style> eq C<dzil>
+Defaults to C<undef>, or C<{{$NEXT}}> if C<next_style> C<eq> C<dzil>
 
 =head2 C<next_style>
 
