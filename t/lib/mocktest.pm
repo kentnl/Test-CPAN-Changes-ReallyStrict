@@ -22,6 +22,7 @@ sub diag {
   push @{ $self->all_events }, [ 'diag', @message ];
   return 1;
 }
+
 sub note {
   my ( $self, @message ) = @_;
   push @{ $self->all_events }, [ 'note', @message ];

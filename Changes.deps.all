@@ -7,6 +7,9 @@
  [Added / test requires]
  - lib
 
+ [Changed / develop requires]
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.007000 → 2.007001
+
  [Changed / runtime requires]
  - perl 5.006 → 5.008
 
