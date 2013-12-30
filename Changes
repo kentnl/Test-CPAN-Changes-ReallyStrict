@@ -1,6 +1,6 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
-0.2.0 2013-12-30T03:01:58Z
+0.2.0 2013-12-30T03:02:56Z
  [00 Major]
  - Internals overhauled into a more logical object per-file.
  - Test::MockObject logic eliminated.

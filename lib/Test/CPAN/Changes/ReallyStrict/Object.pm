@@ -181,26 +181,26 @@ sub valid_releases {
 
 sub compare_line {
   my ( $self, $source, $normalised, $line_number, $failed_before ) = @_;
-  if ( not defined $source and not defined $line_numberrmalised ) {
+  if ( not defined $source and not defined $normalised ) {
     $self->testbuilder->ok( 1, "source($line_number) == normalised($line_number) : undef vs undef" );
     return 1;
   }
-  if ( defined $source and not defined $line_numberrmalised ) {
+  if ( defined $source and not defined $normalised ) {
     $self->testbuilder->ok( 0, "source($line_number) != normalised($line_number) : defined vs undef" );
     return;
   }
-  if ( not defined $source and defined $line_numberrmalised ) {
+  if ( not defined $source and defined $normalised ) {
     $self->testbuilder->ok( 0, "source($line_number) != normalised($line_number) : undef vs defined" );
     return;
   }
-  if ( $source eq $line_numberrmalised ) {
+  if ( $source eq $normalised ) {
     $self->testbuilder->ok( 1, "source($line_number) == normalised($line_number) : val eq val" );
     return 1;
   }
   if ( not $failed_before ) {
     $self->testbuilder->ok( 0, "Lines differ at $line_number" );
   }
-  $self->testbuilder->diag( sprintf q{[%s] Expected: >%s<}, $line_number, $line_numberrmalised );
+  $self->testbuilder->diag( sprintf q{[%s] Expected: >%s<}, $line_number, $normalised );
   $self->testbuilder->diag( sprintf q{[%s] Got     : >%s<}, $line_number, $source );
   return;
 
