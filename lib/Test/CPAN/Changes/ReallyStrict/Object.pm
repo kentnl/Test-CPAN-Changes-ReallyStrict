@@ -217,7 +217,7 @@ sub compare_lines {
 
   $self->testbuilder->subtest(
     'compare lines source vs normalised' => sub {
-      $self->testbuilder->diag( sprintf "Source: %s, Normalised: %s", $#source, $#normalised );
+      $self->testbuilder->note( sprintf q[Source: %s, Normalised: %s], $#source, $#normalised );
       my $failed_already;
       for ( 0 .. $#source ) {
         my $line_passed = $self->compare_line( $source[$_], $normalised[$_], $_, $failed_already );
