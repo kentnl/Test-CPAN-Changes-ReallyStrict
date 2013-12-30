@@ -2,36 +2,11 @@ use strict;
 use warnings;
 
 use Test::More 0.96;
-use Test::MockObject;
 use FindBin;
+use lib "$FindBin::Bin/lib";
+use mocktest;
 
-my $mock = Test::MockObject->new();
-
-our @events;
-
-$mock->mock(
-  'ok' => sub {
-    my ( $self, @args ) = @_;
-    push @events, [ 'ok', @args ];
-  }
-);
-
-$mock->mock(
-  'diag' => sub {
-    my ( $self, @args ) = @_;
-    push @events, [ 'diag', @args ];
-  }
-);
-
-$mock->mock(
-  'subtest' => sub {
-    my ( $self, $name, $code ) = @_;
-    push @events, [ 'ENTER subtest', $name ];
-    my $rval = $code->();
-    push @events, [ 'EXIT subtest', $name ];
-    return $rval;
-  }
-);
+my $mock = mocktest->new();
 
 use Test::CPAN::Changes::ReallyStrict::Object;
 
@@ -52,7 +27,7 @@ my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
 );
 
 if ( not ok( !$obj->changes_ok, "Expected bad file is bad ( In progress )" ) ) {
-  diag join q[, ], @{$_} for @events;
+  note $_ for $mock->ls_events;
 }
 
 done_testing;
