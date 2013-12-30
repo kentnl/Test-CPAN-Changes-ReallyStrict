@@ -2,26 +2,11 @@ use strict;
 use warnings;
 
 use Test::More 0.96;
-use Test::MockObject;
 use FindBin;
+use lib "$FindBin::Bin/lib";
+use mocktest;
 
-my $mock = Test::MockObject->new();
-
-my @events;
-
-$mock->mock(
-  'ok' => sub {
-    my ( $self, @args ) = @_;
-    push @events, [ 'ok', @args ];
-  }
-);
-
-$mock->mock(
-  'diag' => sub {
-    my ( $self, @args ) = @_;
-    push @events, [ 'diag', @args ];
-  }
-);
+my $mock = mocktest->new();
 
 #
 # This test tests the behaviour of Changes files with {{$NEXT}} in them.
@@ -34,22 +19,24 @@ $mock->mock(
 #
 use Test::CPAN::Changes::ReallyStrict;
 
-ok(
-  Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
-    $mock,
-    {
-      delete_empty_groups => undef,
-      keep_comparing      => 1,
-      filename            => "$FindBin::Bin/../corpus/Changes_03.txt",
-      next_token          => qr/{{\$NEXT}}/
-    }
-  ),
-  "Expected {NEXT} file is good ( Fixed in CPAN::Changes 0.17 )"
-  )
-  or do {
-  note explain \@events;
-  };
-
-is( scalar @events, 5, 'There are 5 events sent to the test system with this option on' ) or note explain \@events;
+my $result = Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
+  $mock,
+  {
+    delete_empty_groups => undef,
+    keep_comparing      => 1,
+    filename            => "$FindBin::Bin/../corpus/Changes_03.txt",
+    next_token          => qr/{{\$NEXT}}/
+  }
+);
+my $needs_diag;
+if ( not ok( $result, "Expected {NEXT} file is good ( Fixed in CPAN::Changes 0.17 )" ) ) {
+  $needs_diag = 1;
+}
+if ( not is( $mock->num_events, 423, 'There are 423 events sent to the test system with this option on' ) ) {
+  $needs_diag = 1;
+}
+if ($needs_diag) {
+  diag $_ for $mock->ls_events;
+}
 
 done_testing;
