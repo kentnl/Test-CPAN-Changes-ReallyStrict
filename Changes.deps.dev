@@ -1,4 +1,8 @@
-0.1.6
+0.2.0
+ [Changed / develop requires]
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.007000 → 2.007001
+
+0.1.6 2013-12-29T06:57:51Z
  [Added / develop requires]
  - Dist::Zilla::Plugin::Authority 1.006
  - Dist::Zilla::Plugin::AutoPrereqs

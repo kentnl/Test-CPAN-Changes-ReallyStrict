@@ -1,4 +1,22 @@
-0.1.6
+0.2.0
+ [Added / runtime requires]
+ - Class::Tiny
+ - Try::Tiny
+ - utf8
+
+ [Added / test requires]
+ - lib
+
+ [Changed / develop requires]
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.007000 → 2.007001
+
+ [Changed / runtime requires]
+ - perl 5.006 → 5.008
+
+ [Removed / test requires]
+ - Test::MockObject
+
+0.1.6 2013-12-29T06:57:51Z
  [Added / develop requires]
  - Dist::Zilla::Plugin::Authority 1.006
  - Dist::Zilla::Plugin::AutoPrereqs
