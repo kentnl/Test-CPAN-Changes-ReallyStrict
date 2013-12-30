@@ -10,7 +10,7 @@ BEGIN {
   $Test::CPAN::Changes::ReallyStrict::Object::VERSION = '0.2.0';
 }
 
-# ABSTRACT: Object Oriented Guts to ::ReallyStrict
+# ABSTRACT: Object Oriented Guts to C<::ReallyStrict>
 
 use Test::Builder;
 use Try::Tiny;
@@ -242,7 +242,7 @@ __END__
 
 =head1 NAME
 
-Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to ::ReallyStrict
+Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to C<::ReallyStrict>
 
 =head1 VERSION
 
@@ -279,7 +279,7 @@ version 0.2.0
 =head2 C<valid_releases>
 
     if ( $self->valid_releases() ) {
-    
+
     }
 
 =head2 C<compare_line>
