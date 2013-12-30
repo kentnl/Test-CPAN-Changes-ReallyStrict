@@ -6,7 +6,7 @@ BEGIN {
   $Test::CPAN::Changes::ReallyStrict::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.6';
+  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.1.7';
 }
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
@@ -15,6 +15,7 @@ BEGIN {
 
 use CPAN::Changes 0.17;
 use Test::Builder;
+use Test::CPAN::Changes::ReallyStrict::Object;
 
 my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
@@ -53,7 +54,6 @@ sub _config {
 
 sub changes_ok {
   my (@args) = @_;
-  $TEST->plan( tests => 4 );
   return changes_file_ok( undef, @args );
 }
 
@@ -70,13 +70,26 @@ sub changes_file_ok {
   $file ||= 'Changes';
   my $real_config = _config($config);
   $real_config->{filename} = $file;
-  return _real_changes_file_ok( $TEST, $real_config );
+  my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
+    {
+      testbuilder => $TEST,
+      %{$real_config}
+    }
+  );
+  return $obj->changes_ok;
 }
 
 # Factoring design split so testing can inject a test::builder dummy
 
 sub _real_changes_file_ok {
   my ( $tester, $state ) = @_;
+  my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
+    {
+      testbuilder => $tester,
+      %{$state}
+    }
+  );
+  return $obj->changes_ok;
 
   #die q{Internal error, filename should be defined} if ( not defined $state->{filename} );
   return unless _test_load( $tester, $state );
@@ -260,7 +273,7 @@ Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it 
 
 =head1 VERSION
 
-version 0.1.6
+version 0.1.7
 
 =head1 SYNOPSIS
 

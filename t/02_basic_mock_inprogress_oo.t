@@ -5,25 +5,28 @@ use Test::More 0.96;
 use FindBin;
 use lib "$FindBin::Bin/lib";
 use mocktest;
+
 my $mock = mocktest->new();
 
-use Test::CPAN::Changes::ReallyStrict;
+use Test::CPAN::Changes::ReallyStrict::Object;
 
 #
 # This tests for the behaviour that, a file with a {{NEXT}}
 # token in it is deemed "invalid" if the next-token option is
 # not parsed to the validator.
+#
 
-my $result = Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
-  $mock,
+my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
   {
+    testbuilder         => $mock,
     delete_empty_groups => undef,
     keep_comparing      => undef,
+    next_token          => '__',
     filename            => "$FindBin::Bin/../corpus/Changes_02.txt",
   }
 );
 
-if ( not ok( !$result, "Expected bad file is bad ( In progress )" ) ) {
+if ( not ok( !$obj->changes_ok, "Expected bad file is bad ( In progress )" ) ) {
   note $_ for $mock->ls_events;
 }
 

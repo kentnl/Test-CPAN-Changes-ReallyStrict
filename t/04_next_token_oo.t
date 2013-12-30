@@ -17,26 +17,27 @@ my $mock = mocktest->new();
 # However, as of 0.17 it is no longer a problem, but this test is still
 # here in case other inconsitencies crop up.
 #
-use Test::CPAN::Changes::ReallyStrict;
+use Test::CPAN::Changes::ReallyStrict::Object;
 
-my $result = Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
-  $mock,
+my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
   {
+    testbuilder         => $mock,
+    filename            => "$FindBin::Bin/../corpus/Changes_03.txt",
     delete_empty_groups => undef,
     keep_comparing      => 1,
-    filename            => "$FindBin::Bin/../corpus/Changes_03.txt",
     next_token          => qr/{{\$NEXT}}/
   }
 );
-my $needs_diag;
-if ( not ok( $result, "Expected {NEXT} file is good ( Fixed in CPAN::Changes 0.17 )" ) ) {
-  $needs_diag = 1;
+
+my $need_diag;
+
+if ( not ok( $obj->changes_ok, "Expected {NEXT} file is good ( Fixed in CPAN::Changes 0.17 )" ) ) {
+  $need_diag = 1;
 }
 if ( not is( $mock->num_events, 423, 'There are 423 events sent to the test system with this option on' ) ) {
-  $needs_diag = 1;
+  $need_diag = 1;
 }
-if ($needs_diag) {
+if ($need_diag) {
   diag $_ for $mock->ls_events;
 }
-
 done_testing;
