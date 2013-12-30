@@ -335,13 +335,13 @@ B<Lazy>: Lines from C<filename>
 
 B<Default>: C<undef>
 
-Wether to delete empty groups while serializing.
+Whether to delete empty groups while serializing.
 
 =head2 C<keep_comparing>
 
 B<Default>: C<undef>
 
-Wether to continute comparing lines after a missmatch.
+Whether to continue comparing lines after a miss-match.
 
 =head1 AUTHOR
 
