@@ -103,11 +103,11 @@
    "provides" : {
       "Test::CPAN::Changes::ReallyStrict" : {
          "file" : "lib/Test/CPAN/Changes/ReallyStrict.pm",
-         "version" : "v0.1.7"
+         "version" : "v0.2.0"
       },
       "Test::CPAN::Changes::ReallyStrict::Object" : {
          "file" : "lib/Test/CPAN/Changes/ReallyStrict/Object.pm",
-         "version" : "v0.1.7"
+         "version" : "v0.2.0"
       }
    },
    "release_status" : "stable",
@@ -122,7 +122,7 @@
          "web" : "https://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict"
       }
    },
-   "version" : "0.1.7",
+   "version" : "0.2.0",
    "x_BuiltWith" : {
       "modules" : {
          "CPAN::Changes" : "0.27",

@@ -7,7 +7,7 @@ BEGIN {
   $Test::CPAN::Changes::ReallyStrict::Object::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::CPAN::Changes::ReallyStrict::Object::VERSION = '0.1.7';
+  $Test::CPAN::Changes::ReallyStrict::Object::VERSION = '0.2.0';
 }
 
 # ABSTRACT: OO Guts
@@ -235,7 +235,7 @@ Test::CPAN::Changes::ReallyStrict::Object - OO Guts
 
 =head1 VERSION
 
-version 0.1.7
+version 0.2.0
 
 =head1 AUTHOR
 
