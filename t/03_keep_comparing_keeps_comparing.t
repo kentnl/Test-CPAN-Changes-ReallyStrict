@@ -2,44 +2,32 @@ use strict;
 use warnings;
 
 use Test::More 0.96;
-use Test::MockObject;
 use FindBin;
+use lib "$FindBin::Bin/lib";
+use mocktest;
 
-my $mock = Test::MockObject->new();
+my $mock = mocktest->new();
 
-my @events;
-
-$mock->mock(
-  'ok' => sub {
-    my ( $self, @args ) = @_;
-    push @events, [ 'ok', @args ];
+use Test::CPAN::Changes::ReallyStrict ();
+my $res = Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
+  $mock,
+  {
+    delete_empty_groups => undef,
+    keep_comparing      => 1,
+    filename            => "$FindBin::Bin/../corpus/Changes_02.txt",
   }
 );
 
-$mock->mock(
-  'diag' => sub {
-    my ( $self, @args ) = @_;
-    push @events, [ 'diag', @args ];
-  }
-);
+my $need_diag;
 
-use Test::CPAN::Changes::ReallyStrict;
-
-ok(
-  !Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
-    $mock,
-    {
-      delete_empty_groups => undef,
-      keep_comparing      => 1,
-      filename            => "$FindBin::Bin/../corpus/Changes_02.txt",
-    }
-  ),
-  "Expected bad file is bad ( In progress"
-  )
-  or do {
-  note explain \@events;
-  };
-
-is( scalar @events, 579, "There is 579 events sent to the test system with this option on" ) or note explain \@events;
+if ( not ok( !$res, "Expected bad file is bad ( In progress )" ) ) {
+  $need_diag = 1;
+}
+if ( not is( $mock->num_events, 708, "There is 708 events sent to the test system with this option on" ) ) {
+  $need_diag = 1;
+}
+if ($need_diag) {
+  diag $_ for $mock->ls_events;
+}
 
 done_testing;
