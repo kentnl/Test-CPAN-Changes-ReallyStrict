@@ -4,7 +4,7 @@ use utf8;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
 
-# ABSTRACT: OO Guts
+# ABSTRACT: Object Oriented Guts to C<::ReallyStrict>
 
 use Test::Builder;
 use Try::Tiny;
@@ -12,9 +12,58 @@ use Try::Tiny;
 my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
 
+=attr C<testbuilder>
+
+Plumbing: This is where test builder calls get made.
+
+=attr C<filename>
+
+The name/path of the changes file.
+
+B<Default>: C<Changes>
+
+=attr C<next_token>
+
+The regular expression to use for C<next_token>
+
+Defaults to C<undef>, or C<{{$NEXT}}> if C<next_style> C<eq> C<dzil>
+
+=attr C<next_style>
+
+The C<next_token> style.
+
+Defaults to C<undef>
+
+=attr C<changes>
+
+B<Lazy>: A C<CPAN::Changes> object read from C<filename>
+
+=attr C<normalised_lines>
+
+B<Lazy>: Lines from serializing C<changes>
+
+=attr C<source_lines>
+
+B<Lazy>: Lines from C<filename>
+
+=cut
+
+=attr C<delete_empty_groups>
+
+B<Default>: C<undef>
+
+Whether to delete empty groups while serializing.
+
+=attr C<keep_comparing>
+
+B<Default>: C<undef>
+
+Whether to continue comparing lines after a miss-match.
+
+=cut
+
 use Class::Tiny {
   testbuilder => sub { $TEST },
-  file        => sub { },
   filename    => sub { 'Changes' },
   next_token  => sub {
     return unless defined $_[0]->next_style;
@@ -40,6 +89,8 @@ use Class::Tiny {
   source_lines => sub {
     my ($self) = @_;
     my $fh;
+    ## no critic (ProhibitPunctuationVars)
+
     if ( not open $fh, '<', $self->filename ) {
       $self->testbuilder->ok( 0, $self->filename . ' failed to open' );
       $self->testbuilder->diag( 'Error ' . $! );
@@ -56,8 +107,14 @@ use Class::Tiny {
   keep_comparing      => sub { },
 };
 
+=method C<changes_ok>
+
+
+
+=cut
+
 sub changes_ok {
-  my ( $self, $config ) = @_;
+  my ( $self, ) = @_;
   my $exi;
   $self->testbuilder->subtest(
     'changes_ok' => sub {
@@ -73,6 +130,14 @@ sub changes_ok {
   return unless $exi;
   return 1;
 }
+
+=method C<loads_ok>
+
+    if ( $self->loads_ok() ) {
+
+    }
+
+=cut
 
 sub loads_ok {
   my ($self) = @_;
@@ -94,6 +159,14 @@ sub loads_ok {
   return;
 }
 
+=method C<has_releases>
+
+    if( $self->has_releases() ){
+
+    }
+
+=cut
+
 sub has_releases {
   my ($self)     = @_;
   my (@releases) = $self->changes->releases;
@@ -102,7 +175,16 @@ sub has_releases {
     return 1;
   }
   $self->testbuilder->ok( 0, $self->filename . ' does not contain any release' );
+  return;
 }
+
+=method C<valid_release_date>
+
+    if ( $self->valid_release_date( $release, $release_id ) ) {
+
+    }
+
+=cut
 
 sub valid_release_date {
   my ( $self, $release, $release_id ) = @_;
@@ -118,6 +200,14 @@ sub valid_release_date {
   $self->testbuilder->diag( '  ERR:' . $release->date );
   return;
 }
+
+=method C<valid_release_version>
+
+    if ( $self->valid_release_version( $release, $release_id ) ) {
+
+    }
+
+=cut
 
 sub valid_release_version {
   my ( $self, $release, $release_id ) = @_;
@@ -137,6 +227,14 @@ sub valid_release_version {
   $self->testbuilder->diag( '  ERR:' . $release->version );
   return;
 }
+
+=method C<valid_releases>
+
+    if ( $self->valid_releases() ) {
+
+    }
+
+=cut
 
 sub valid_releases {
   my ($self) = @_;
@@ -163,32 +261,48 @@ sub valid_releases {
   return;
 }
 
+=method C<compare_line>
+
+    if ( $self->compare_line( $source_line, $normalised_line, $line_number, $failed_before ) ) {
+
+    }
+
+=cut
+
 sub compare_line {
-  my ( $self, $source, $normalised, $no, $failed_before ) = @_;
+  my ( $self, $source, $normalised, $line_number, $failed_before ) = @_;
   if ( not defined $source and not defined $normalised ) {
-    $self->testbuilder->ok( 1, "source($no) == normalised($no) : undef vs undef" );
+    $self->testbuilder->ok( 1, "source($line_number) == normalised($line_number) : undef vs undef" );
     return 1;
   }
   if ( defined $source and not defined $normalised ) {
-    $self->testbuilder->ok( 0, "source($no) != normalised($no) : defined vs undef" );
+    $self->testbuilder->ok( 0, "source($line_number) != normalised($line_number) : defined vs undef" );
     return;
   }
   if ( not defined $source and defined $normalised ) {
-    $self->testbuilder->ok( 0, "source($no) != normalised($no) : undef vs defined" );
+    $self->testbuilder->ok( 0, "source($line_number) != normalised($line_number) : undef vs defined" );
     return;
   }
   if ( $source eq $normalised ) {
-    $self->testbuilder->ok( 1, "source($no) == normalised($no) : val eq val" );
+    $self->testbuilder->ok( 1, "source($line_number) == normalised($line_number) : val eq val" );
     return 1;
   }
   if ( not $failed_before ) {
-    $self->testbuilder->ok( 0, "Lines differ at $no" );
+    $self->testbuilder->ok( 0, "Lines differ at $line_number" );
   }
-  $self->testbuilder->diag( sprintf q{[%s] Expected: >%s<}, $no, $normalised );
-  $self->testbuilder->diag( sprintf q{[%s] Got     : >%s<}, $no, $source );
+  $self->testbuilder->diag( sprintf q{[%s] Expected: >%s<}, $line_number, $normalised );
+  $self->testbuilder->diag( sprintf q{[%s] Got     : >%s<}, $line_number, $source );
   return;
 
 }
+
+=method C<compare_lines>
+
+    if ( $self->compare_lines ) {
+
+    }
+
+=cut
 
 sub compare_lines {
   my ($self) = @_;
@@ -200,7 +314,7 @@ sub compare_lines {
 
   $self->testbuilder->subtest(
     'compare lines source vs normalised' => sub {
-      $self->testbuilder->diag( sprintf "Source: %s, Normalised: %s", $#source, $#normalised );
+      $self->testbuilder->note( sprintf q[Source: %s, Normalised: %s], $#source, $#normalised );
       my $failed_already;
       for ( 0 .. $#source ) {
         my $line_passed = $self->compare_line( $source[$_], $normalised[$_], $_, $failed_already );
