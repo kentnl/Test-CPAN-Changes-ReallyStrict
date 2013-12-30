@@ -19,6 +19,7 @@ my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
 
 
+
 use Class::Tiny {
   testbuilder => sub { $TEST },
   filename    => sub { 'Changes' },
@@ -320,13 +321,27 @@ Defaults to C<undef>
 
 =head2 C<changes>
 
+B<Lazy>: A C<CPAN::Changes> object read from C<filename>
+
 =head2 C<normalised_lines>
+
+B<Lazy>: Lines from serializing C<changes>
 
 =head2 C<source_lines>
 
+B<Lazy>: Lines from C<filename>
+
 =head2 C<delete_empty_groups>
 
+B<Default>: C<undef>
+
+Wether to delete empty groups while serializing.
+
 =head2 C<keep_comparing>
+
+B<Default>: C<undef>
+
+Wether to continute comparing lines after a missmatch.
 
 =head1 AUTHOR
 
