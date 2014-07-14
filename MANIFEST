@@ -16,10 +16,12 @@ dist.ini
 dist.ini.meta
 lib/Test/CPAN/Changes/ReallyStrict.pm
 lib/Test/CPAN/Changes/ReallyStrict/Object.pm
+maint/perlcritic.rc.gen.pl
 misc/Changes.deps
 misc/Changes.deps.all
 misc/Changes.deps.dev
 misc/Changes.deps.opt
+misc/perlcritic.deps
 perlcritic.rc
 t/00-compile/lib_Test_CPAN_Changes_ReallyStrict_Object_pm.t
 t/00-compile/lib_Test_CPAN_Changes_ReallyStrict_pm.t

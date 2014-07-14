@@ -1,9 +1,17 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
 0.2.1
+ [Added / configure recommends]
+ - ExtUtils::MakeMaker 6.98
+
+ [Added / configure requires]
+ - ExtUtils::MakeMaker 6.30
+
  [Added / develop requires]
  - Dist::Zilla::Plugin::BumpVersionAfterRelease
+ - Dist::Zilla::Plugin::CopyFilesFromBuild
  - Dist::Zilla::Plugin::Git::NextRelease
+ - Dist::Zilla::Plugin::MakeMaker
  - Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled
  - Dist::Zilla::Plugin::RewriteVersion::Sanitized
  - Dist::Zilla::Plugin::Test::ReportPrereqs
@@ -15,6 +23,8 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  [Added / test recommends]
  - CPAN::Meta
  - CPAN::Meta::Requirements 2.120900
+ - ExtUtils::MakeMaker 6.98
+ - Test::More 1.001003
 
  [Added / test requires]
  - ExtUtils::MakeMaker
@@ -22,19 +32,21 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - List::Util
  - version
 
- [Changed / build requires]
- - Module::Build 0.4203 → 0.4206
-
- [Changed / configure requires]
- - Module::Build 0.4203 → 0.4206
-
  [Changed / test requires]
- - Test::More 1.001002 → 1.001003
+ - Test::More 1.001002 → 0.96
+
+ [Removed / build requires]
+ - Module::Build 0.4203
+
+ [Removed / configure requires]
+ - Module::Build 0.4203
 
  [Removed / develop requires]
  - Dist::Zilla::Plugin::Git::NextVersion::Sanitized
+ - Dist::Zilla::Plugin::ModuleBuild
  - Dist::Zilla::Plugin::NextRelease
  - Dist::Zilla::Plugin::PkgVersion
+ - Dist::Zilla::Plugin::Prereqs::MatchInstalled
  - Dist::Zilla::Plugin::ReportVersions::Tiny
  - Dist::Zilla::PluginBundle::Author::KENTNL 2.007001
  - version 0.9901
