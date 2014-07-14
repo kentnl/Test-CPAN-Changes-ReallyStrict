@@ -98,8 +98,8 @@ sub changes_file_ok {
   my $changes_obj = Test::CPAN::Changes::ReallyStrict::Object->new(
     {
       testbuilder => $TEST,
-      %{$config}
-    }
+      %{$config},
+    },
   );
   return $changes_obj->changes_ok;
 }
@@ -108,13 +108,13 @@ sub changes_file_ok {
 
 sub _real_changes_file_ok {
   my ( $tester, $state ) = @_;
-  my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
+  my $changes_obj = Test::CPAN::Changes::ReallyStrict::Object->new(
     {
       testbuilder => $tester,
-      %{$state}
-    }
+      %{$state},
+    },
   );
-  return $obj->changes_ok;
+  return $changes_obj->changes_ok;
 }
 
 1;
