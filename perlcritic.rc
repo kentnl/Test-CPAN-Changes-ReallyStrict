@@ -95,6 +95,7 @@ allow_includes = 1
 [Compatibility::Gtk2Constants]
 
 [Compatibility::PerlMinimumVersionAndWhy]
+skip_checks = _Pulp__5010_qr_m_propagate_properly
 
 [-Compatibility::PodMinimumVersion]
 
@@ -124,7 +125,7 @@ allow_includes = 1
 
 [Documentation::PodSpelling]
 spell_command = aspell list --lang en_US
-stop_words = programmatically
+stop_words = programmatically ReallyStrict
 
 [Documentation::ProhibitAdjacentLinks]
 

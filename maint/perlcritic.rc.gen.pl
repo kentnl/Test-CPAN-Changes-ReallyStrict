@@ -20,12 +20,15 @@ $bundle->configure;
 
 my @stopwords = (
   qw(
-    programmatically
+    programmatically ReallyStrict
     )
 );
 for my $wordlist (@stopwords) {
   $bundle->add_or_append_policy_field( 'Documentation::PodSpelling' => ( 'stop_words' => $wordlist ) );
 }
+
+$bundle->add_or_append_policy_field(
+  'Compatibility::PerlMinimumVersionAndWhy' => ( 'skip_checks' => '_Pulp__5010_qr_m_propagate_properly' ) );
 
 #$bundle->add_or_append_policy_field(
 #  'Subroutines::ProhibitCallsToUndeclaredSubs' => ( 'exempt_subs' => 'String::Formatter::str_rf' ), );
