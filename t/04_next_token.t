@@ -25,7 +25,7 @@ my $result = Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
     delete_empty_groups => undef,
     keep_comparing      => 1,
     filename            => "$FindBin::Bin/../corpus/Changes_03.txt",
-    next_token          => qr/{{\$NEXT}}/
+    next_token          => qr/\{\{\$NEXT\}\}/
   }
 );
 my $needs_diag;
