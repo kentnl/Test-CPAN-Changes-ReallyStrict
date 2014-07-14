@@ -1,4 +1,8 @@
-0.2.0
+This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
+
+0.2.1
+
+0.2.0 2013-12-30T03:31:25Z
  [Added / runtime requires]
  - Class::Tiny
  - Try::Tiny
