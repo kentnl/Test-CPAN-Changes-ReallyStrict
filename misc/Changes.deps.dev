@@ -6,13 +6,18 @@ This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and 
  - Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled
  - Dist::Zilla::Plugin::Test::ReportPrereqs
 
- [Changed / develop requires]
- - Dist::Zilla::PluginBundle::Author::KENTNL 2.007001 → 2.016002
+ [Added / develop suggests]
+ - Dist::Zilla::App::Command::bakeini 0.001001
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.016002
 
  [Removed / develop requires]
  - Dist::Zilla::Plugin::NextRelease
  - Dist::Zilla::Plugin::ReportVersions::Tiny
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.007001
  - version 0.9901
+
+ [Removed / develop suggests]
+ - Dist::Zilla::PluginBundle::Author::KENTNL::Lite v1.3.0
 
 0.2.0 2013-12-30T03:31:25Z
  [Changed / develop requires]
