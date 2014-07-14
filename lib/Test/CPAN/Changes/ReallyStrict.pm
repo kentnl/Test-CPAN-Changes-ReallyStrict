@@ -1,5 +1,7 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
+use utf8;
 
 package Test::CPAN::Changes::ReallyStrict;
 
@@ -35,11 +37,10 @@ use CPAN::Changes 0.17;
 use Test::Builder;
 use Test::CPAN::Changes::ReallyStrict::Object;
 
-my $TEST       = Test::Builder->new();
-my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
+my $TEST = Test::Builder->new();
 
 sub import {
-  my ( $self, @args ) = @_;
+  my ( undef, @args ) = @_;
 
   my $caller = caller;
   {
@@ -94,13 +95,13 @@ sub changes_file_ok {
   my ( $file, $config ) = @_;
   $file ||= 'Changes';
   $config->{filename} = $file;
-  my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
+  my $changes_obj = Test::CPAN::Changes::ReallyStrict::Object->new(
     {
       testbuilder => $TEST,
       %{$config}
     }
   );
-  return $obj->changes_ok;
+  return $changes_obj->changes_ok;
 }
 
 # Factoring design split so testing can inject a test::builder dummy
