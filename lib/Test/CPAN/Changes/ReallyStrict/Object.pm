@@ -72,7 +72,7 @@ use Class::Tiny {
   filename    => sub { 'Changes' },
   next_token  => sub {
     return unless defined $_[0]->next_style;
-    return qr/{{\$NEXT}}/ if $_[0]->next_style eq 'dzil';
+    return qr/{{\$NEXT}}/msx if 'dzil' eq $_[0]->next_style;
     return;
   },
   next_style => sub { undef },
@@ -89,7 +89,7 @@ use Class::Tiny {
       $self->changes->delete_empty_groups;
     }
     my $string = $self->changes->serialize;
-    return [ split /\n/, $string ];
+    return [ split /\n/msx, $string ];
   },
   source_lines => sub {
     my ($self) = @_;
