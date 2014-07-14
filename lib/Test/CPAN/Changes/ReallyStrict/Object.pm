@@ -4,6 +4,8 @@ use utf8;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
 
+our $VERSION = '1.000000';
+
 # ABSTRACT: Object Oriented Guts to C<::ReallyStrict>
 
 use Test::Builder;
