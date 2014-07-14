@@ -8,6 +8,8 @@ our $VERSION = '1.000000';
 
 # ABSTRACT: Object Oriented Guts to C<::ReallyStrict>
 
+# AUTHORITY
+
 use Test::Builder;
 use Try::Tiny;
 
