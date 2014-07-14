@@ -342,6 +342,8 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to ::ReallyStrict

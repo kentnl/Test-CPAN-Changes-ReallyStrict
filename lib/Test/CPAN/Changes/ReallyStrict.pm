@@ -123,6 +123,8 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it would if it was machine generated.
