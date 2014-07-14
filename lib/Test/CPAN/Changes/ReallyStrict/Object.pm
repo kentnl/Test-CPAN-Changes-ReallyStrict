@@ -7,7 +7,7 @@ package Test::CPAN::Changes::ReallyStrict::Object;
 
 our $VERSION = '1.000000';
 
-# ABSTRACT: Object Oriented Guts to C<::ReallyStrict>
+# ABSTRACT: Object Oriented Guts to ::ReallyStrict
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -256,11 +256,11 @@ sub valid_releases {
             return unless $self->valid_release_date( $release, $id );
             return unless $self->valid_release_version( $release, $id );
             $sub_exit = 1;
-          }
+          },
         );
         undef $top_exit unless $sub_exit;
       }
-    }
+    },
   );
   return 1 if $top_exit;
   return;
@@ -331,7 +331,7 @@ sub compare_lines {
           }
         }
       }
-    }
+    },
   );
   return 1 if $all_lines_passed;
   return;
@@ -344,7 +344,7 @@ __END__
 
 =head1 NAME
 
-Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to C<::ReallyStrict>
+Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to ::ReallyStrict
 
 =head1 VERSION
 
