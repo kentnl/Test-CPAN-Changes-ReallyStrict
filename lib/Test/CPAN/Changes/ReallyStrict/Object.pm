@@ -1,3 +1,4 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
 use utf8;
@@ -6,12 +7,12 @@ package Test::CPAN::Changes::ReallyStrict::Object;
 
 our $VERSION = '1.000000';
 
-# ABSTRACT: Object Oriented Guts to C<::ReallyStrict>
+# ABSTRACT: Object Oriented Guts to ::ReallyStrict
 
 # AUTHORITY
 
 use Test::Builder;
-use Try::Tiny;
+use Try::Tiny qw( try catch );
 
 my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
@@ -71,7 +72,7 @@ use Class::Tiny {
   filename    => sub { 'Changes' },
   next_token  => sub {
     return unless defined $_[0]->next_style;
-    return qr/{{\$NEXT}}/ if $_[0]->next_style eq 'dzil';
+    return qr/{{\$NEXT}}/msx if 'dzil' eq $_[0]->next_style;
     return;
   },
   next_style => sub { undef },
@@ -88,7 +89,7 @@ use Class::Tiny {
       $self->changes->delete_empty_groups;
     }
     my $string = $self->changes->serialize;
-    return [ split /\n/, $string ];
+    return [ split /\n/msx, $string ];
   },
   source_lines => sub {
     my ($self) = @_;
@@ -105,7 +106,7 @@ use Class::Tiny {
       scalar <$fh>;
     };
     close $fh or $self->testbuilder->diag( 'Warning: Error Closing ' . $self->filename );
-    return [ split /\n/, $str ];
+    return [ split /\n/msx, $str ];
   },
   delete_empty_groups => sub { },
   keep_comparing      => sub { },
@@ -129,7 +130,7 @@ sub changes_ok {
 
       #$self->testbuilder->ok(1, 'All Subtests for ' . $self->filename . ' done' );
       $exi = 1;
-    }
+    },
   );
   return unless $exi;
   return 1;
@@ -196,7 +197,7 @@ sub valid_release_date {
     $self->testbuilder->ok( 1, "release $release_id has valid date (none|next_token)" );
     return 1;
   }
-  if ( $release->date =~ m/^${CPAN::Changes::W3CDTF_REGEX}\s*$/ ) {
+  if ( $release->date =~ m/\A${CPAN::Changes::W3CDTF_REGEX}\s*\z/msx ) {
     $self->testbuilder->ok( 1, "release $release_id has valid date (regexp match)" );
     return 1;
   }
@@ -223,7 +224,7 @@ sub valid_release_version {
     $self->testbuilder->ok( 1, "release $release_id has valid version (regexp match on next_token)" );
     return 1;
   }
-  if ( $release->version =~ m/$version_re/ ) {
+  if ( $release->version =~ m/$version_re/msx ) {
     $self->testbuilder->ok( 1, "release $release_id has valid version (regexp match version re)" );
     return 1;
   }
@@ -255,11 +256,11 @@ sub valid_releases {
             return unless $self->valid_release_date( $release, $id );
             return unless $self->valid_release_version( $release, $id );
             $sub_exit = 1;
-          }
+          },
         );
         undef $top_exit unless $sub_exit;
       }
-    }
+    },
   );
   return 1 if $top_exit;
   return;
@@ -330,7 +331,7 @@ sub compare_lines {
           }
         }
       }
-    }
+    },
   );
   return 1 if $all_lines_passed;
   return;
