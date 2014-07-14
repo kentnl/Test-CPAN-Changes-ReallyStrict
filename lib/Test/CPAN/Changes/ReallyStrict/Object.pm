@@ -197,7 +197,7 @@ sub valid_release_date {
     $self->testbuilder->ok( 1, "release $release_id has valid date (none|next_token)" );
     return 1;
   }
-  if ( $release->date =~ m/^${CPAN::Changes::W3CDTF_REGEX}\s*$/ ) {
+  if ( $release->date =~ m/\A${CPAN::Changes::W3CDTF_REGEX}\s*\z/msx ) {
     $self->testbuilder->ok( 1, "release $release_id has valid date (regexp match)" );
     return 1;
   }
@@ -224,7 +224,7 @@ sub valid_release_version {
     $self->testbuilder->ok( 1, "release $release_id has valid version (regexp match on next_token)" );
     return 1;
   }
-  if ( $release->version =~ m/$version_re/ ) {
+  if ( $release->version =~ m/$version_re/msx ) {
     $self->testbuilder->ok( 1, "release $release_id has valid version (regexp match version re)" );
     return 1;
   }
