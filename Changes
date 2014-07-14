@@ -1,6 +1,18 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
 {{$NEXT}}
+ [00 Major]
+ - Packaging changes that may break downstreams that work by hand.
+ - Internals and stylistic tweaks.
+
+ [01 New Version Scheme]
+ - Moving to x.yyyyyy instead of x.y.z ( https://questhub.io/realm/perl/quest/5388d3a9bbd0be2224000129 )
+ - This is the primary reason for the 1.0 on the box.
+
+ [02 New Toolkit]
+ - This release ships with EUMM instead of MB ( https://questhub.io/realm/perl/quest/5388cc12bbd0be5b2500011f )
+ - "latest" Toolkit dependencies softened to "recommends" instead of "requires"
+
  [Dependencies::Stats]
  - Dependencies changed since 0.2.0, see misc/*.deps* for details
  - build: -1
