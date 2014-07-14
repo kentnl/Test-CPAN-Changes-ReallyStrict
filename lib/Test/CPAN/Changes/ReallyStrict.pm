@@ -7,6 +7,8 @@ our $VERSION = '1.000000';
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 
