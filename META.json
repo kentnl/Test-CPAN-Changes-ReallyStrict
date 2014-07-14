@@ -111,11 +111,11 @@
    "provides" : {
       "Test::CPAN::Changes::ReallyStrict" : {
          "file" : "lib/Test/CPAN/Changes/ReallyStrict.pm",
-         "version" : "v0.2.1"
+         "version" : "0.002001"
       },
       "Test::CPAN::Changes::ReallyStrict::Object" : {
          "file" : "lib/Test/CPAN/Changes/ReallyStrict/Object.pm",
-         "version" : "v0.2.1"
+         "version" : "0.002001"
       }
    },
    "release_status" : "stable",
@@ -130,7 +130,7 @@
          "web" : "https://github.com/kentfredric/Test-CPAN-Changes-ReallyStrict"
       }
    },
-   "version" : "0.2.1",
+   "version" : "0.002001",
    "x_BuiltWith" : {
       "modules" : {
          "CPAN::Changes" : "0.28",
@@ -236,7 +236,7 @@
                },
                "Dist::Zilla::Role::Version::Sanitize" : {
                   "mantissa" : "6",
-                  "normal_form" : "normal_3"
+                  "normal_form" : "numify"
                }
             },
             "name" : "@Author::KENTNL/Git::NextVersion::Sanitized",
@@ -622,7 +622,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "0.2.1-source",
+                  "tag" : "0.002001-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -688,7 +688,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : "releases",
                   "signed" : 0,
-                  "tag" : "0.2.1",
+                  "tag" : "0.002001",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
