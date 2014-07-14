@@ -1,6 +1,6 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
-1.000000 2014-07-14T19:53:28Z
+1.000000 2014-07-14T20:00:31Z
  [00 Major]
  - Packaging changes that may break downstreams that work by hand.
  - Internals and stylistic tweaks.
