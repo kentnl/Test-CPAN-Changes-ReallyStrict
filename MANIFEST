@@ -13,6 +13,7 @@ corpus/Changes_01.txt
 corpus/Changes_02.txt
 corpus/Changes_03.txt
 dist.ini
+dist.ini.meta
 lib/Test/CPAN/Changes/ReallyStrict.pm
 lib/Test/CPAN/Changes/ReallyStrict/Object.pm
 maint-travis-ci/README.mkdn
