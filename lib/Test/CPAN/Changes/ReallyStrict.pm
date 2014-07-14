@@ -2,14 +2,28 @@ use strict;
 use warnings;
 
 package Test::CPAN::Changes::ReallyStrict;
-BEGIN {
-  $Test::CPAN::Changes::ReallyStrict::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.2.0';
-}
-
+$Test::CPAN::Changes::ReallyStrict::VERSION = '0.2.1';
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -36,6 +50,17 @@ sub import {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 sub changes_ok {
   my (@args) = @_;
   return changes_file_ok( undef, @args );
@@ -46,6 +71,19 @@ sub _real_changes_ok {
   my ( $tester, $state ) = @_;
   return _real_changes_file_ok( $tester, $state );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub changes_file_ok {
@@ -86,7 +124,7 @@ Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it 
 
 =head1 VERSION
 
-version 0.2.0
+version 0.2.1
 
 =head1 SYNOPSIS
 
@@ -136,7 +174,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

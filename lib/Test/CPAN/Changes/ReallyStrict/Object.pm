@@ -3,13 +3,7 @@ use warnings;
 use utf8;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
-BEGIN {
-  $Test::CPAN::Changes::ReallyStrict::Object::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Test::CPAN::Changes::ReallyStrict::Object::VERSION = '0.2.0';
-}
-
+$Test::CPAN::Changes::ReallyStrict::Object::VERSION = '0.2.1';
 # ABSTRACT: Object Oriented Guts to C<::ReallyStrict>
 
 use Test::Builder;
@@ -17,6 +11,54 @@ use Try::Tiny;
 
 my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -66,6 +108,11 @@ use Class::Tiny {
 };
 
 
+
+
+
+
+
 sub changes_ok {
   my ( $self, ) = @_;
   my $exi;
@@ -83,6 +130,13 @@ sub changes_ok {
   return unless $exi;
   return 1;
 }
+
+
+
+
+
+
+
 
 
 sub loads_ok {
@@ -106,6 +160,13 @@ sub loads_ok {
 }
 
 
+
+
+
+
+
+
+
 sub has_releases {
   my ($self)     = @_;
   my (@releases) = $self->changes->releases;
@@ -116,6 +177,13 @@ sub has_releases {
   $self->testbuilder->ok( 0, $self->filename . ' does not contain any release' );
   return;
 }
+
+
+
+
+
+
+
 
 
 sub valid_release_date {
@@ -132,6 +200,13 @@ sub valid_release_date {
   $self->testbuilder->diag( '  ERR:' . $release->date );
   return;
 }
+
+
+
+
+
+
+
 
 
 sub valid_release_version {
@@ -152,6 +227,13 @@ sub valid_release_version {
   $self->testbuilder->diag( '  ERR:' . $release->version );
   return;
 }
+
+
+
+
+
+
+
 
 
 sub valid_releases {
@@ -180,6 +262,13 @@ sub valid_releases {
 }
 
 
+
+
+
+
+
+
+
 sub compare_line {
   my ( $self, $source, $normalised, $line_number, $failed_before ) = @_;
   if ( not defined $source and not defined $normalised ) {
@@ -206,6 +295,13 @@ sub compare_line {
   return;
 
 }
+
+
+
+
+
+
+
 
 
 sub compare_lines {
@@ -247,7 +343,7 @@ Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to C<::ReallySt
 
 =head1 VERSION
 
-version 0.2.0
+version 0.2.1
 
 =head1 METHODS
 
@@ -349,7 +445,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
