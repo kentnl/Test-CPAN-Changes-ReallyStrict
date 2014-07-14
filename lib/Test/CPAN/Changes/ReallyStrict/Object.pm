@@ -1,22 +1,69 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
 use utf8;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
-BEGIN {
-  $Test::CPAN::Changes::ReallyStrict::Object::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Test::CPAN::Changes::ReallyStrict::Object::VERSION = '0.2.0';
-}
 
-# ABSTRACT: Object Oriented Guts to C<::ReallyStrict>
+our $VERSION = '1.000000';
+
+# ABSTRACT: Object Oriented Guts to ::ReallyStrict
+
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Test::Builder;
-use Try::Tiny;
+use Try::Tiny qw( try catch );
 
 my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -25,7 +72,7 @@ use Class::Tiny {
   filename    => sub { 'Changes' },
   next_token  => sub {
     return unless defined $_[0]->next_style;
-    return qr/{{\$NEXT}}/ if $_[0]->next_style eq 'dzil';
+    return qr/[{][{]\$NEXT[}][}]/msx if 'dzil' eq $_[0]->next_style;
     return;
   },
   next_style => sub { undef },
@@ -42,7 +89,7 @@ use Class::Tiny {
       $self->changes->delete_empty_groups;
     }
     my $string = $self->changes->serialize;
-    return [ split /\n/, $string ];
+    return [ split /\n/msx, $string ];
   },
   source_lines => sub {
     my ($self) = @_;
@@ -59,11 +106,16 @@ use Class::Tiny {
       scalar <$fh>;
     };
     close $fh or $self->testbuilder->diag( 'Warning: Error Closing ' . $self->filename );
-    return [ split /\n/, $str ];
+    return [ split /\n/msx, $str ];
   },
   delete_empty_groups => sub { },
   keep_comparing      => sub { },
 };
+
+
+
+
+
 
 
 sub changes_ok {
@@ -78,11 +130,18 @@ sub changes_ok {
 
       #$self->testbuilder->ok(1, 'All Subtests for ' . $self->filename . ' done' );
       $exi = 1;
-    }
+    },
   );
   return unless $exi;
   return 1;
 }
+
+
+
+
+
+
+
 
 
 sub loads_ok {
@@ -106,6 +165,13 @@ sub loads_ok {
 }
 
 
+
+
+
+
+
+
+
 sub has_releases {
   my ($self)     = @_;
   my (@releases) = $self->changes->releases;
@@ -118,13 +184,20 @@ sub has_releases {
 }
 
 
+
+
+
+
+
+
+
 sub valid_release_date {
   my ( $self, $release, $release_id ) = @_;
   if ( not defined $release->date and defined $self->next_token ) {
     $self->testbuilder->ok( 1, "release $release_id has valid date (none|next_token)" );
     return 1;
   }
-  if ( $release->date =~ m/^${CPAN::Changes::W3CDTF_REGEX}\s*$/ ) {
+  if ( $release->date =~ m/\A${CPAN::Changes::W3CDTF_REGEX}\s*\z/msx ) {
     $self->testbuilder->ok( 1, "release $release_id has valid date (regexp match)" );
     return 1;
   }
@@ -132,6 +205,13 @@ sub valid_release_date {
   $self->testbuilder->diag( '  ERR:' . $release->date );
   return;
 }
+
+
+
+
+
+
+
 
 
 sub valid_release_version {
@@ -144,7 +224,7 @@ sub valid_release_version {
     $self->testbuilder->ok( 1, "release $release_id has valid version (regexp match on next_token)" );
     return 1;
   }
-  if ( $release->version =~ m/$version_re/ ) {
+  if ( $release->version =~ m/$version_re/msx ) {
     $self->testbuilder->ok( 1, "release $release_id has valid version (regexp match version re)" );
     return 1;
   }
@@ -152,6 +232,13 @@ sub valid_release_version {
   $self->testbuilder->diag( '  ERR:' . $release->version );
   return;
 }
+
+
+
+
+
+
+
 
 
 sub valid_releases {
@@ -169,15 +256,22 @@ sub valid_releases {
             return unless $self->valid_release_date( $release, $id );
             return unless $self->valid_release_version( $release, $id );
             $sub_exit = 1;
-          }
+          },
         );
         undef $top_exit unless $sub_exit;
       }
-    }
+    },
   );
   return 1 if $top_exit;
   return;
 }
+
+
+
+
+
+
+
 
 
 sub compare_line {
@@ -208,6 +302,13 @@ sub compare_line {
 }
 
 
+
+
+
+
+
+
+
 sub compare_lines {
   my ($self) = @_;
 
@@ -230,7 +331,7 @@ sub compare_lines {
           }
         }
       }
-    }
+    },
   );
   return 1 if $all_lines_passed;
   return;
@@ -241,13 +342,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
-Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to C<::ReallyStrict>
+Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to ::ReallyStrict
 
 =head1 VERSION
 
-version 0.2.0
+version 1.000000
 
 =head1 METHODS
 
@@ -349,7 +452,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

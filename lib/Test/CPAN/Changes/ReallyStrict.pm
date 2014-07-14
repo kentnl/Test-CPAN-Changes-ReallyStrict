@@ -1,15 +1,35 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
+use utf8;
 
 package Test::CPAN::Changes::ReallyStrict;
-BEGIN {
-  $Test::CPAN::Changes::ReallyStrict::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Test::CPAN::Changes::ReallyStrict::VERSION = '0.2.0';
-}
+
+our $VERSION = '1.000000';
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
+
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -17,11 +37,10 @@ use CPAN::Changes 0.17;
 use Test::Builder;
 use Test::CPAN::Changes::ReallyStrict::Object;
 
-my $TEST       = Test::Builder->new();
-my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
+my $TEST = Test::Builder->new();
 
 sub import {
-  my ( $self, @args ) = @_;
+  my ( undef, @args ) = @_;
 
   my $caller = caller;
   {
@@ -36,6 +55,17 @@ sub import {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 sub changes_ok {
   my (@args) = @_;
   return changes_file_ok( undef, @args );
@@ -48,30 +78,43 @@ sub _real_changes_ok {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 sub changes_file_ok {
   my ( $file, $config ) = @_;
   $file ||= 'Changes';
   $config->{filename} = $file;
-  my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
+  my $changes_obj = Test::CPAN::Changes::ReallyStrict::Object->new(
     {
       testbuilder => $TEST,
-      %{$config}
-    }
+      %{$config},
+    },
   );
-  return $obj->changes_ok;
+  return $changes_obj->changes_ok;
 }
 
 # Factoring design split so testing can inject a test::builder dummy
 
 sub _real_changes_file_ok {
   my ( $tester, $state ) = @_;
-  my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
+  my $changes_obj = Test::CPAN::Changes::ReallyStrict::Object->new(
     {
       testbuilder => $tester,
-      %{$state}
-    }
+      %{$state},
+    },
   );
-  return $obj->changes_ok;
+  return $changes_obj->changes_ok;
 }
 
 1;
@@ -80,13 +123,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it would if it was machine generated.
 
 =head1 VERSION
 
-version 0.2.0
+version 1.000000
 
 =head1 SYNOPSIS
 
@@ -136,7 +181,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
