@@ -106,7 +106,7 @@ use Class::Tiny {
       scalar <$fh>;
     };
     close $fh or $self->testbuilder->diag( 'Warning: Error Closing ' . $self->filename );
-    return [ split /\n/, $str ];
+    return [ split /\n/msx, $str ];
   },
   delete_empty_groups => sub { },
   keep_comparing      => sub { },
@@ -130,7 +130,7 @@ sub changes_ok {
 
       #$self->testbuilder->ok(1, 'All Subtests for ' . $self->filename . ' done' );
       $exi = 1;
-    }
+    },
   );
   return unless $exi;
   return 1;
