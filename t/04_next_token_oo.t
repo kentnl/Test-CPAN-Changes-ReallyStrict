@@ -25,7 +25,7 @@ my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
     filename            => "$FindBin::Bin/../corpus/Changes_03.txt",
     delete_empty_groups => undef,
     keep_comparing      => 1,
-    next_token          => qr/{{\$NEXT}}/
+    next_token          => qr/\{\{\$NEXT\}\}/
   }
 );
 
