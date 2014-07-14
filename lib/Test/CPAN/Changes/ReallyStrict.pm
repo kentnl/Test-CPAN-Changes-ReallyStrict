@@ -5,7 +5,7 @@ use utf8;
 
 package Test::CPAN::Changes::ReallyStrict;
 
-our $VERSION = '1.000000';
+our $VERSION = '1.000001';
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
 
