@@ -1,6 +1,37 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
 0.2.1
+ [Added / develop requires]
+ - Dist::Zilla::Plugin::Git::NextRelease
+ - Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled
+ - Dist::Zilla::Plugin::Test::ReportPrereqs
+
+ [Added / test recommends]
+ - CPAN::Meta
+ - CPAN::Meta::Requirements 2.120900
+
+ [Added / test requires]
+ - ExtUtils::MakeMaker
+ - File::Spec::Functions
+ - List::Util
+ - version
+
+ [Changed / build requires]
+ - Module::Build 0.4203 → 0.4206
+
+ [Changed / configure requires]
+ - Module::Build 0.4203 → 0.4206
+
+ [Changed / develop requires]
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.007001 → 2.016002
+
+ [Changed / test requires]
+ - Test::More 1.001002 → 1.001003
+
+ [Removed / develop requires]
+ - Dist::Zilla::Plugin::NextRelease
+ - Dist::Zilla::Plugin::ReportVersions::Tiny
+ - version 0.9901
 
 0.2.0 2013-12-30T03:31:25Z
  [Added / runtime requires]
