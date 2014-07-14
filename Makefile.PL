@@ -34,6 +34,7 @@ my %WriteMakefileArgs = (
     "FindBin" => 0,
     "List::Util" => 0,
     "Test::More" => "0.96",
+    "Text::Wrap" => 0,
     "lib" => 0,
     "version" => 0
   },
@@ -53,6 +54,7 @@ my %FallbackPrereqs = (
   "List::Util" => 0,
   "Test::Builder" => 0,
   "Test::More" => "0.96",
+  "Text::Wrap" => 0,
   "Try::Tiny" => 0,
   "lib" => 0,
   "strict" => 0,

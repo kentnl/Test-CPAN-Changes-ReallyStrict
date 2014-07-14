@@ -132,6 +132,7 @@ my $static_prereqs = do { my $x = {
                                    'FindBin' => '0',
                                    'List::Util' => '0',
                                    'Test::More' => '0.96',
+                                   'Text::Wrap' => '0',
                                    'lib' => '0',
                                    'version' => '0'
                                  }
