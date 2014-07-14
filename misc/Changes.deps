@@ -8,6 +8,7 @@ This file contains changes in REQUIRED dependencies for standard CPAN phases (co
  - ExtUtils::MakeMaker
  - File::Spec::Functions
  - List::Util
+ - Text::Wrap
  - version
 
  [Changed / test requires]
