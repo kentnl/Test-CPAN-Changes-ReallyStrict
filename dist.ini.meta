@@ -13,7 +13,7 @@ git_versions      = 1
 twitter_hash_tags = #perl #cpan
 normal_form = numify
 mantissa    = 6
-
+bumpversions = 1
 ;version_major     = 0
 ;version_minor     = 1
 ; the following data denotes when this minor was minted

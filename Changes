@@ -1,6 +1,6 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
-0.002001 2014-07-14T19:13:03Z
+1.000000 2014-07-14T19:15:22Z
  [Dependencies::Stats]
  - Dependencies changed since 0.2.0, see misc/*.deps* for details
  - build: ↑1

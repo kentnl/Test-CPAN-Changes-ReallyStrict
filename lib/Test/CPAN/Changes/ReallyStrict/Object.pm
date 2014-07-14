@@ -3,7 +3,9 @@ use warnings;
 use utf8;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
-$Test::CPAN::Changes::ReallyStrict::Object::VERSION = '0.002001';
+
+our $VERSION = '1.000000';
+
 # ABSTRACT: Object Oriented Guts to C<::ReallyStrict>
 
 use Test::Builder;
@@ -343,7 +345,7 @@ Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to C<::ReallySt
 
 =head1 VERSION
 
-version 0.002001
+version 1.000000
 
 =head1 METHODS
 
