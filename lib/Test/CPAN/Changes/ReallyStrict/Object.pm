@@ -72,7 +72,7 @@ use Class::Tiny {
   filename    => sub { 'Changes' },
   next_token  => sub {
     return unless defined $_[0]->next_style;
-    return qr/\{\{\$NEXT\}\}/msx if 'dzil' eq $_[0]->next_style;
+    return qr/[{][{]\$NEXT[}][}]/msx if 'dzil' eq $_[0]->next_style;
     return;
   },
   next_style => sub { undef },
