@@ -17,56 +17,6 @@ use Try::Tiny qw( try catch );
 my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 use Class::Tiny {
   testbuilder => sub { $TEST },
   filename    => sub { 'Changes' },
@@ -111,8 +61,6 @@ use Class::Tiny {
   delete_empty_groups => sub { },
   keep_comparing      => sub { },
 };
-
-
 
 
 

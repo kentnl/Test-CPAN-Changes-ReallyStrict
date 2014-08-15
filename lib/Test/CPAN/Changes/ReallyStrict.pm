@@ -11,28 +11,6 @@ our $VERSION = '1.000001';
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 use CPAN::Changes 0.17;
 use Test::Builder;
 use Test::CPAN::Changes::ReallyStrict::Object;
