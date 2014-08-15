@@ -17,56 +17,6 @@ use Try::Tiny qw( try catch );
 my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
 
-=attr C<testbuilder>
-
-Plumbing: This is where test builder calls get made.
-
-=attr C<filename>
-
-The name/path of the changes file.
-
-B<Default>: C<Changes>
-
-=attr C<next_token>
-
-The regular expression to use for C<next_token>
-
-Defaults to C<undef>, or C<{{$NEXT}}> if C<next_style> C<eq> C<dzil>
-
-=attr C<next_style>
-
-The C<next_token> style.
-
-Defaults to C<undef>
-
-=attr C<changes>
-
-B<Lazy>: A C<CPAN::Changes> object read from C<filename>
-
-=attr C<normalised_lines>
-
-B<Lazy>: Lines from serializing C<changes>
-
-=attr C<source_lines>
-
-B<Lazy>: Lines from C<filename>
-
-=cut
-
-=attr C<delete_empty_groups>
-
-B<Default>: C<undef>
-
-Whether to delete empty groups while serializing.
-
-=attr C<keep_comparing>
-
-B<Default>: C<undef>
-
-Whether to continue comparing lines after a miss-match.
-
-=cut
-
 use Class::Tiny {
   testbuilder => sub { $TEST },
   filename    => sub { 'Changes' },
@@ -113,8 +63,6 @@ use Class::Tiny {
 };
 
 =method C<changes_ok>
-
-
 
 =cut
 
@@ -337,3 +285,51 @@ sub compare_lines {
   return;
 }
 1;
+
+=attr C<testbuilder>
+
+Plumbing: This is where test builder calls get made.
+
+=attr C<filename>
+
+The name/path of the changes file.
+
+B<Default>: C<Changes>
+
+=attr C<next_token>
+
+The regular expression to use for C<next_token>
+
+Defaults to C<undef>, or C<{{$NEXT}}> if C<next_style> C<eq> C<dzil>
+
+=attr C<next_style>
+
+The C<next_token> style.
+
+Defaults to C<undef>
+
+=attr C<changes>
+
+B<Lazy>: A C<CPAN::Changes> object read from C<filename>
+
+=attr C<normalised_lines>
+
+B<Lazy>: Lines from serializing C<changes>
+
+=attr C<source_lines>
+
+B<Lazy>: Lines from C<filename>
+
+=attr C<delete_empty_groups>
+
+B<Default>: C<undef>
+
+Whether to delete empty groups while serializing.
+
+=attr C<keep_comparing>
+
+B<Default>: C<undef>
+
+Whether to continue comparing lines after a miss-match.
+
+=cut

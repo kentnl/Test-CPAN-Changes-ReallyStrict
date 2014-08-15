@@ -11,28 +11,6 @@ our $VERSION = '1.000001';
 
 # AUTHORITY
 
-=head1 SYNOPSIS
-
-  use Test::More;
-  eval 'use Test::CPAN::Changes::ReallyStrict';
-  plan skip_all => 'Test::CPAN::Changes::ReallyStrict required for this test' if $@;
-  changes_ok();
-  done_testing();
-
-=cut
-
-=head1 DESCRIPTION
-
-This module is for people who want their Changes file to be 1:1 Identical to how it would be
-if they'd generated it programmatically with CPAN::Changes.
-
-This is not for the faint of heart, and will whine about even minor changes of white-space.
-
-You are also at upstream's mercy as to what a changes file looks like, and in order to keep this test
-happy, you'll have to update your whole changes file if upstream changes how they format things.
-
-=cut
-
 use CPAN::Changes 0.17;
 use Test::Builder;
 use Test::CPAN::Changes::ReallyStrict::Object;
@@ -118,3 +96,23 @@ sub _real_changes_file_ok {
 }
 
 1;
+
+=head1 SYNOPSIS
+
+  use Test::More;
+  eval 'use Test::CPAN::Changes::ReallyStrict';
+  plan skip_all => 'Test::CPAN::Changes::ReallyStrict required for this test' if $@;
+  changes_ok();
+  done_testing();
+
+=head1 DESCRIPTION
+
+This module is for people who want their Changes file to be 1:1 Identical to how it would be
+if they'd generated it programmatically with CPAN::Changes.
+
+This is not for the faint of heart, and will whine about even minor changes of white-space.
+
+You are also at upstream's mercy as to what a changes file looks like, and in order to keep this test
+happy, you'll have to update your whole changes file if upstream changes how they format things.
+
+=cut

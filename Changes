@@ -6,6 +6,7 @@ Release history for Test-CPAN-Changes-ReallyStrict
  - no code changes.
  - tests augmented.
  - metadata updated.
+ - whitespace reduced.
 
  [Dependencies::Stats]
  - Dependencies changed since 1.000000, see misc/*.deps* for details
@@ -15,6 +16,9 @@ Release history for Test-CPAN-Changes-ReallyStrict
 
  [Metadata]
  - move to kentnl org.
+
+ [Misc]
+ - Improve source side POD to reduce build side whitespace.
 
  [Tests]
  - update Test::ReportPrereqs
