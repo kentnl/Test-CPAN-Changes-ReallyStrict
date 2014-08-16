@@ -5,7 +5,7 @@ use utf8;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
 
-our $VERSION = '1.000000';
+our $VERSION = '1.000001';
 
 # ABSTRACT: Object Oriented Guts to ::ReallyStrict
 
@@ -16,56 +16,6 @@ use Try::Tiny qw( try catch );
 
 my $TEST       = Test::Builder->new();
 my $version_re = '^[._\-[:alnum:]]+$';    # "Looks like" a version
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 use Class::Tiny {
   testbuilder => sub { $TEST },
@@ -111,8 +61,6 @@ use Class::Tiny {
   delete_empty_groups => sub { },
   keep_comparing      => sub { },
 };
-
-
 
 
 
@@ -350,7 +298,7 @@ Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to ::ReallyStri
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 METHODS
 

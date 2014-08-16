@@ -5,33 +5,11 @@ use utf8;
 
 package Test::CPAN::Changes::ReallyStrict;
 
-our $VERSION = '1.000000';
+our $VERSION = '1.000001';
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 use CPAN::Changes 0.17;
 use Test::Builder;
@@ -131,7 +109,7 @@ Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it 
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 SYNOPSIS
 
