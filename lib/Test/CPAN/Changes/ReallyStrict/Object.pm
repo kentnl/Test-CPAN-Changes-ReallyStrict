@@ -5,7 +5,7 @@ use utf8;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
 
-our $VERSION = '1.000001';
+our $VERSION = '1.000002';
 
 # ABSTRACT: Object Oriented Guts to ::ReallyStrict
 
@@ -298,7 +298,7 @@ Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to ::ReallyStri
 
 =head1 VERSION
 
-version 1.000001
+version 1.000002
 
 =head1 METHODS
 

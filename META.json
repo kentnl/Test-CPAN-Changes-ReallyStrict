@@ -110,11 +110,11 @@
    "provides" : {
       "Test::CPAN::Changes::ReallyStrict" : {
          "file" : "lib/Test/CPAN/Changes/ReallyStrict.pm",
-         "version" : "1.000001"
+         "version" : "1.000002"
       },
       "Test::CPAN::Changes::ReallyStrict::Object" : {
          "file" : "lib/Test/CPAN/Changes/ReallyStrict/Object.pm",
-         "version" : "1.000001"
+         "version" : "1.000002"
       }
    },
    "release_status" : "stable",
@@ -129,7 +129,7 @@
          "web" : "https://github.com/kentnl/Test-CPAN-Changes-ReallyStrict"
       }
    },
-   "version" : "1.000001",
+   "version" : "1.000002",
    "x_BuiltWith" : {
       "modules" : {
          "CPAN::Changes" : "0.30",
@@ -628,7 +628,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "1.000001-source",
+                  "tag" : "1.000002-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -699,7 +699,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : "releases",
                   "signed" : 0,
-                  "tag" : "1.000001",
+                  "tag" : "1.000002",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
