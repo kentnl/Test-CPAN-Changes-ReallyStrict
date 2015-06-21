@@ -95,4 +95,3 @@ This file contains changes in REQUIRED dependencies for standard CPAN phases (co
 0.1.1 2011-04-17T00:38:07Z
  [Changed / runtime requires]
  - CPAN::Changes 0 → 0.16
-
