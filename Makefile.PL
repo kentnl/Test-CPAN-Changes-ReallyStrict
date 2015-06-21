@@ -23,6 +23,7 @@ my %WriteMakefileArgs = (
     "Test::Builder" => 0,
     "Try::Tiny" => 0,
     "strict" => 0,
+    "utf8" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
@@ -31,8 +32,7 @@ my %WriteMakefileArgs = (
     "FindBin" => 0,
     "Test::More" => "0.96",
     "Text::Wrap" => 0,
-    "lib" => 0,
-    "utf8" => 0
+    "lib" => 0
   },
   "VERSION" => "1.000002",
   "test" => {

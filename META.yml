@@ -10,10 +10,9 @@ build_requires:
   Text::Wrap: '0'
   lib: '0'
   perl: '5.008'
-  utf8: '0'
 configure_requires:
   ExtUtils::MakeMaker: '0'
-  perl: '5.006'
+  perl: '5.008'
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 5.037, CPAN::Meta::Converter version 2.150005'
 license: perl
@@ -35,6 +34,7 @@ requires:
   Try::Tiny: '0'
   perl: '5.008'
   strict: '0'
+  utf8: '0'
   warnings: '0'
 resources:
   bugtracker: https://github.com/kentnl/Test-CPAN-Changes-ReallyStrict/issues
