@@ -236,6 +236,16 @@ sub compare_line {
     $self->testbuilder->ok( 0, "source($line_number) != normalised($line_number) : undef vs defined" );
     return;
   }
+  if ( $] > 5.008 ) {
+    if ( $ENV{AUTHOR_TESTING} ) {
+      my (@utf8ness) = map { utf8::is_utf8($_) } $source, $normalised;
+      if ( $utf8ness[0] != $utf8ness[1] ) {
+        $self->testbuilder->diag( sprintf "utf8ness differs: source=%s normalised=%s", @utf8ness );
+      }
+    }
+    utf8::encode($source)     if utf8::is_utf8($source);
+    utf8::encode($normalised) if utf8::is_utf8($normalised);
+  }
   if ( $source eq $normalised ) {
     $self->testbuilder->ok( 1, "source($line_number) == normalised($line_number) : val eq val" );
     return 1;
@@ -270,7 +280,10 @@ sub compare_lines {
       $self->testbuilder->note( sprintf q[Source: %s, Normalised: %s], $#source, $#normalised );
       my $failed_already;
       for ( 0 .. $#source ) {
-        my $line_passed = $self->compare_line( $source[$_], $normalised[$_], $_, $failed_already );
+        my $source_line = $source[$_];
+        my $normal_line = $normalised[$_];
+
+        my $line_passed = $self->compare_line( $source_line, $normal_line, $_, $failed_already );
         if ( not $line_passed ) {
           $failed_already = 1;
           undef $all_lines_passed;
