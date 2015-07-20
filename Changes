@@ -1,6 +1,9 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
 {{$NEXT}}
+ [Bugfix]
+ - Ensure encoding of source and normalised lines are the same.
+
  [Dependencies::Stats]
  - Dependencies changed since 1.000001, see misc/*.deps* for details
  - configure: +1 (recommends: ↑1)

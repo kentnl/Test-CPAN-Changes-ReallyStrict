@@ -236,6 +236,17 @@ sub compare_line {
     $self->testbuilder->ok( 0, "source($line_number) != normalised($line_number) : undef vs defined" );
     return;
   }
+  if ( $] > 5.008 ) {
+    ## no critic (ProhibitCallsToUnexportedSubs)
+    if ( $ENV{AUTHOR_TESTING} ) {
+      my (@utf8ness) = map { utf8::is_utf8($_) } $source, $normalised;
+      if ( $utf8ness[0] != $utf8ness[1] ) {
+        $self->testbuilder->diag( sprintf 'utf8ness differs: source=%s normalised=%s', @utf8ness );
+      }
+    }
+    utf8::encode($source)     if utf8::is_utf8($source);
+    utf8::encode($normalised) if utf8::is_utf8($normalised);
+  }
   if ( $source eq $normalised ) {
     $self->testbuilder->ok( 1, "source($line_number) == normalised($line_number) : val eq val" );
     return 1;
