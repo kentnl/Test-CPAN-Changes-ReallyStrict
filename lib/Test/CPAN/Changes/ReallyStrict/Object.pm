@@ -1,7 +1,6 @@
-use 5.008;    # utf8
+use 5.006;
 use strict;
 use warnings;
-use utf8;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
 
@@ -280,10 +279,7 @@ sub compare_lines {
       $self->testbuilder->note( sprintf q[Source: %s, Normalised: %s], $#source, $#normalised );
       my $failed_already;
       for ( 0 .. $#source ) {
-        my $source_line = $source[$_];
-        my $normal_line = $normalised[$_];
-
-        my $line_passed = $self->compare_line( $source_line, $normal_line, $_, $failed_already );
+        my $line_passed = $self->compare_line( $source[$_], $normalised[$_], $_, $failed_already );
         if ( not $line_passed ) {
           $failed_already = 1;
           undef $all_lines_passed;
