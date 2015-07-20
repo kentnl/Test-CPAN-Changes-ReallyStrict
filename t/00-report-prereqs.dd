@@ -5,7 +5,7 @@ do { my $x = {
                                         },
                         'requires' => {
                                         'ExtUtils::MakeMaker' => '0',
-                                        'perl' => '5.008'
+                                        'perl' => '5.006'
                                       }
                       },
        'develop' => {
@@ -85,7 +85,6 @@ do { my $x = {
                                       'Try::Tiny' => '0',
                                       'perl' => '5.008',
                                       'strict' => '0',
-                                      'utf8' => '0',
                                       'warnings' => '0'
                                     }
                     },
@@ -102,7 +101,8 @@ do { my $x = {
                                    'Test::More' => '0.96',
                                    'Text::Wrap' => '0',
                                    'lib' => '0',
-                                   'perl' => '5.008'
+                                   'perl' => '5.008',
+                                   'utf8' => '0'
                                  }
                  }
      };
