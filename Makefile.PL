@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.008;
+use 5.006;
 
 use ExtUtils::MakeMaker;
 
@@ -15,7 +15,7 @@ my %WriteMakefileArgs = (
   "DISTNAME" => "Test-CPAN-Changes-ReallyStrict",
   "EXE_FILES" => [],
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.008",
+  "MIN_PERL_VERSION" => "5.006",
   "NAME" => "Test::CPAN::Changes::ReallyStrict",
   "PREREQ_PM" => {
     "CPAN::Changes" => "0.27",
@@ -23,7 +23,6 @@ my %WriteMakefileArgs = (
     "Test::Builder" => 0,
     "Try::Tiny" => 0,
     "strict" => 0,
-    "utf8" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
@@ -53,7 +52,6 @@ my %FallbackPrereqs = (
   "Try::Tiny" => 0,
   "lib" => 0,
   "strict" => 0,
-  "utf8" => 0,
   "warnings" => 0
 );
 
