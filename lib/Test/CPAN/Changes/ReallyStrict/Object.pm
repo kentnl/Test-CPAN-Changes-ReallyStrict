@@ -11,6 +11,7 @@ our $VERSION = '1.000002';
 # AUTHORITY
 
 use Test::Builder;
+use Encode qw( decode FB_CROAK LEAVE_SRC );
 use Try::Tiny qw( try catch );
 
 my $TEST       = Test::Builder->new();
@@ -45,7 +46,7 @@ use Class::Tiny {
     my $fh;
     ## no critic (ProhibitPunctuationVars)
 
-    if ( not open $fh, '<', $self->filename ) {
+    if ( not open $fh, '<:raw', $self->filename ) {
       $self->testbuilder->ok( 0, $self->filename . ' failed to open' );
       $self->testbuilder->diag( 'Error ' . $! );
       return;
@@ -55,6 +56,8 @@ use Class::Tiny {
       scalar <$fh>;
     };
     close $fh or $self->testbuilder->diag( 'Warning: Error Closing ' . $self->filename );
+    ## no critic (RequireCheckingReturnValueOfEval, ProhibitBitwiseOperators)
+    eval { $str = decode( 'UTF-8', $str, FB_CROAK | LEAVE_SRC ); };
     return [ split /\n/msx, $str ];
   },
   delete_empty_groups => sub { },
