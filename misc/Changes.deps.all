@@ -2,7 +2,7 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
 
 1.000002
  [Added / configure requires]
- - perl 5.008
+ - perl 5.006
 
  [Added / develop recommends]
  - Test::More 0.99
@@ -23,6 +23,7 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
 
  [Added / test requires]
  - perl 5.008
+ - utf8
 
  [Changed / configure recommends]
  - ExtUtils::MakeMaker 6.98 → 7.00
@@ -44,6 +45,9 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - Dist::Zilla::Plugin::EOLTests
  - Dist::Zilla::Plugin::MetaYAML
  - Dist::Zilla::Plugin::ReadmeFromPod
+
+ [Removed / runtime requires]
+ - utf8
 
 1.000001 2014-08-15T23:33:57Z
  [Added / develop requires]
