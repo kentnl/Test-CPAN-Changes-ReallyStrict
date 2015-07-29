@@ -4,6 +4,7 @@ Release history for Test-CPAN-Changes-ReallyStrict
  [Bugfix]
  - Ensure encoding of source and normalised lines are the same.
  - Ensure attempting to load source file in the same manner as CPAN::Changes does w/rt UTF8
+ - Guard against test failure if 0.5x radically changes how things format by degrading currently affected tests to TODO
 
  [Dependencies::Stats]
  - Dependencies changed since 1.000001, see misc/*.deps* for details
