@@ -2,6 +2,15 @@ use strict;
 use warnings;
 
 use Test::More 0.96;
+use CPAN::Changes;
+
+local $TODO;
+if ( eval 'CPAN::Changes->VERSION(q[0.5]); 1' ) {
+  if ( not $ENV{AUTHOR_TESTING} ) {
+    $TODO = "CPAN::Changes >= 0.5 is too new for this test";
+  }
+}
+
 use FindBin;
 use lib "$FindBin::Bin/lib";
 use mocktest;

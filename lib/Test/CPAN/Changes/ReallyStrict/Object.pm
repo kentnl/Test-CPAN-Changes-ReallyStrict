@@ -1,17 +1,17 @@
-use 5.008;    # utf8
+use 5.006;
 use strict;
 use warnings;
-use utf8;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
 
-our $VERSION = '1.000001';
+our $VERSION = '1.000002';
 
 # ABSTRACT: Object Oriented Guts to ::ReallyStrict
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Test::Builder;
+use Encode qw( decode FB_CROAK LEAVE_SRC );
 use Try::Tiny qw( try catch );
 
 my $TEST       = Test::Builder->new();
@@ -46,7 +46,7 @@ use Class::Tiny {
     my $fh;
     ## no critic (ProhibitPunctuationVars)
 
-    if ( not open $fh, '<', $self->filename ) {
+    if ( not open $fh, '<:raw', $self->filename ) {
       $self->testbuilder->ok( 0, $self->filename . ' failed to open' );
       $self->testbuilder->diag( 'Error ' . $! );
       return;
@@ -56,6 +56,8 @@ use Class::Tiny {
       scalar <$fh>;
     };
     close $fh or $self->testbuilder->diag( 'Warning: Error Closing ' . $self->filename );
+    ## no critic (RequireCheckingReturnValueOfEval, ProhibitBitwiseOperators)
+    eval { $str = decode( 'UTF-8', $str, FB_CROAK | LEAVE_SRC ); };
     return [ split /\n/msx, $str ];
   },
   delete_empty_groups => sub { },
@@ -236,6 +238,17 @@ sub compare_line {
     $self->testbuilder->ok( 0, "source($line_number) != normalised($line_number) : undef vs defined" );
     return;
   }
+  if ( $] > 5.008 ) {
+    ## no critic (ProhibitCallsToUnexportedSubs)
+    if ( $ENV{AUTHOR_TESTING} ) {
+      my (@utf8ness) = map { utf8::is_utf8($_) } $source, $normalised;
+      if ( $utf8ness[0] != $utf8ness[1] ) {
+        $self->testbuilder->diag( sprintf 'utf8ness differs: source=%s normalised=%s', @utf8ness );
+      }
+    }
+    utf8::encode($source)     if utf8::is_utf8($source);
+    utf8::encode($normalised) if utf8::is_utf8($normalised);
+  }
   if ( $source eq $normalised ) {
     $self->testbuilder->ok( 1, "source($line_number) == normalised($line_number) : val eq val" );
     return 1;
@@ -298,7 +311,7 @@ Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to ::ReallyStri
 
 =head1 VERSION
 
-version 1.000001
+version 1.000002
 
 =head1 METHODS
 
@@ -400,7 +413,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2015 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
