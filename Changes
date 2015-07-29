@@ -1,6 +1,6 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
-1.000002 2015-07-29T04:47:39Z 711ccd4
+1.000002 2015-07-29T04:58:58Z 2696750
  [Bugfix]
  - Ensure encoding of source and normalised lines are the same.
  - Ensure attempting to load source file in the same manner as CPAN::Changes does w/rt UTF8
@@ -10,7 +10,7 @@ Release history for Test-CPAN-Changes-ReallyStrict
  - Dependencies changed since 1.000001, see misc/*.deps* for details
  - configure: +1 (recommends: ↑1)
  - develop: +12 ↑3 -3 (recommends: +1, suggests: ↑2)
- - runtime: ↓1 -1
+ - runtime: +1 ↓1 -1
  - test: +1 (recommends: ↑1 ↓1)
 
 1.000001 2014-08-15T23:33:57Z

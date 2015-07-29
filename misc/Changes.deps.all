@@ -21,6 +21,9 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - Test::EOL
  - Test::More 0.88
 
+ [Added / runtime requires]
+ - Encode
+
  [Added / test requires]
  - perl 5.006
 
