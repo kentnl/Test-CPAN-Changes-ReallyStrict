@@ -55,6 +55,7 @@
       "Dist::Zilla::Plugin::Twitter" : "0.026",
       "Dist::Zilla::Plugin::UploadToCPAN" : "5.037",
       "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.025001",
+      "Encode" : "2.73",
       "ExtUtils::MakeMaker" : "7.04_01",
       "File::Spec" : "3.56",
       "FindBin" : "1.51",

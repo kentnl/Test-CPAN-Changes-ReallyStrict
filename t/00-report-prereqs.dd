@@ -81,6 +81,7 @@ do { my $x = {
                       'requires' => {
                                       'CPAN::Changes' => '0.27',
                                       'Class::Tiny' => '0',
+                                      'Encode' => '0',
                                       'Test::Builder' => '0',
                                       'Try::Tiny' => '0',
                                       'perl' => '5.006',
