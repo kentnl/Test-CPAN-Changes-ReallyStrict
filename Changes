@@ -1,6 +1,8 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
 {{$NEXT}}
+
+1.000002 2015-07-29T04:58:58Z 2696750
  [Bugfix]
  - Ensure encoding of source and normalised lines are the same.
  - Ensure attempting to load source file in the same manner as CPAN::Changes does w/rt UTF8
