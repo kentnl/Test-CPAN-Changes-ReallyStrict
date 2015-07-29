@@ -56,6 +56,7 @@ use Class::Tiny {
       scalar <$fh>;
     };
     close $fh or $self->testbuilder->diag( 'Warning: Error Closing ' . $self->filename );
+    ## no critic (RequireCheckingReturnValueOfEval, ProhibitBitwiseOperators)
     eval { $str = decode( 'UTF-8', $str, FB_CROAK | LEAVE_SRC ); };
     return [ split /\n/msx, $str ];
   },
