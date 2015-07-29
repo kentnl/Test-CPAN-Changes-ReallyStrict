@@ -1,5 +1,7 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
+1.000003 2015-07-29T05:55:07Z 56c0a46
+
 1.000002 2015-07-29T04:58:58Z 2696750
  [Bugfix]
  - Ensure encoding of source and normalised lines are the same.

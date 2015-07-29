@@ -4,7 +4,7 @@ use warnings;
 
 package Test::CPAN::Changes::ReallyStrict;
 
-our $VERSION = '1.000002';
+our $VERSION = '1.000003';
 
 #ABSTRACT: Ensure a Changes file looks exactly like it would if it was machine generated.
 
@@ -108,7 +108,7 @@ Test::CPAN::Changes::ReallyStrict - Ensure a Changes file looks exactly like it 
 
 =head1 VERSION
 
-version 1.000002
+version 1.000003
 
 =head1 SYNOPSIS
 
