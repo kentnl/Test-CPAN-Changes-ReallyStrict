@@ -22,10 +22,10 @@ name: Test-CPAN-Changes-ReallyStrict
 provides:
   Test::CPAN::Changes::ReallyStrict:
     file: lib/Test/CPAN/Changes/ReallyStrict.pm
-    version: '1.000003'
+    version: '1.000004'
   Test::CPAN::Changes::ReallyStrict::Object:
     file: lib/Test/CPAN/Changes/ReallyStrict/Object.pm
-    version: '1.000003'
+    version: '1.000004'
 requires:
   CPAN::Changes: '0.27'
   Class::Tiny: '0'
@@ -39,4 +39,4 @@ resources:
   bugtracker: https://github.com/kentnl/Test-CPAN-Changes-ReallyStrict/issues
   homepage: https://github.com/kentnl/Test-CPAN-Changes-ReallyStrict
   repository: https://github.com/kentnl/Test-CPAN-Changes-ReallyStrict.git
-version: '1.000003'
+version: '1.000004'
