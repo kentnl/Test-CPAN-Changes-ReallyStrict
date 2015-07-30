@@ -1,6 +1,9 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
-1.000003 2015-07-29T05:55:32Z 7e7e28c
+1.000003 2015-07-30T04:55:19Z 129ac20
+ [Bugfix]
+ - Further narrow the range of versions we do testing on, we missed an important one :(
+ - Centralised logic in process.
 
 1.000002 2015-07-29T04:58:58Z 2696750
  [Bugfix]
