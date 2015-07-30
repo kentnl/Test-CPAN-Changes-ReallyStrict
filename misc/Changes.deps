@@ -1,6 +1,8 @@
 This file contains changes in REQUIRED dependencies for standard CPAN phases (configure/build/runtime/test)
 
 1.000003
+ [Removed / test requires]
+ - FindBin
 
 1.000002 2015-07-29T04:58:58Z
  [Added / configure requires]
