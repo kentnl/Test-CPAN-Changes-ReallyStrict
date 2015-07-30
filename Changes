@@ -1,5 +1,17 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
+1.000003 2015-07-30T05:03:24Z 14306fe
+ [Bugfix]
+ - Further narrow the range of versions we do testing on, we missed an important one :(
+
+ [Dependencies::Stats]
+ - Dependencies changed since 1.000002, see misc/*.deps* for details
+ - test: -1
+
+ [Tests]
+ - Centralised version checking logic.
+ - Remove use of FindBin
+
 1.000002 2015-07-29T04:58:58Z 2696750
  [Bugfix]
  - Ensure encoding of source and normalised lines are the same.

@@ -29,12 +29,11 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
-    "FindBin" => 0,
     "Test::More" => "0.96",
     "Text::Wrap" => 0,
     "lib" => 0
   },
-  "VERSION" => "1.000002",
+  "VERSION" => "1.000003",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t"
   }
@@ -47,7 +46,6 @@ my %FallbackPrereqs = (
   "Encode" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
-  "FindBin" => 0,
   "Test::Builder" => 0,
   "Test::More" => "0.96",
   "Text::Wrap" => 0,

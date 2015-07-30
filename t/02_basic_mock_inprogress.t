@@ -2,8 +2,7 @@ use strict;
 use warnings;
 
 use Test::More 0.96;
-use FindBin;
-use lib "$FindBin::Bin/lib";
+use lib "t/lib";
 use mocktest;
 my $mock = mocktest->new();
 
@@ -19,7 +18,7 @@ my $result = Test::CPAN::Changes::ReallyStrict::_real_changes_file_ok(
   {
     delete_empty_groups => undef,
     keep_comparing      => undef,
-    filename            => "$FindBin::Bin/../corpus/Changes_02.txt",
+    filename            => "corpus/Changes_02.txt",
   }
 );
 

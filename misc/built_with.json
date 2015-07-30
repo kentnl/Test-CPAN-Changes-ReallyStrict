@@ -58,7 +58,6 @@
       "Encode" : "2.73",
       "ExtUtils::MakeMaker" : "7.04_01",
       "File::Spec" : "3.56",
-      "FindBin" : "1.51",
       "Pod::Coverage::TrustPod" : "0.100003",
       "Test::Builder" : "1.001014",
       "Test::CPAN::Changes" : "0.400002",
