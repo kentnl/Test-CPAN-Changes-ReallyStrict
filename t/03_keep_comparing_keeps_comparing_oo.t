@@ -2,18 +2,9 @@ use strict;
 use warnings;
 
 use Test::More 0.96;
-
-use CPAN::Changes;
-
-local $TODO;
-if ( eval 'CPAN::Changes->VERSION(q[0.5]); 1' ) {
-  if ( not $ENV{AUTHOR_TESTING} ) {
-    $TODO = "CPAN::Changes >= 0.5 is too new for this test";
-  }
-}
-
-use FindBin;
-use lib "$FindBin::Bin/lib";
+use lib 't/lib';
+our $TODO;
+use Requires::CCAPI \$TODO;
 use mocktest;
 
 my $mock = mocktest->new();
@@ -23,7 +14,7 @@ use Test::CPAN::Changes::ReallyStrict::Object;
 my $x = Test::CPAN::Changes::ReallyStrict::Object->new(
   {
     testbuilder         => $mock,
-    filename            => "$FindBin::Bin/../corpus/Changes_02.txt",
+    filename            => "corpus/Changes_02.txt",
     delete_empty_groups => undef,
     keep_comparing      => 1,
   }

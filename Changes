@@ -1,6 +1,11 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
 {{$NEXT}}
+ [Bugfix]
+ - Further narrow the range of versions we do testing on, we missed an important one :(
+
+ [Tests]
+ - Centralised version checking logic.
 
 1.000002 2015-07-29T04:58:58Z 2696750
  [Bugfix]
