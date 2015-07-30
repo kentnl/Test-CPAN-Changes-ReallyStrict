@@ -2,8 +2,7 @@ use strict;
 use warnings;
 
 use Test::More 0.96;
-use FindBin;
-use lib "$FindBin::Bin/lib";
+use lib "t/lib";
 use mocktest;
 
 my $mock = mocktest->new();
@@ -22,7 +21,7 @@ my $obj = Test::CPAN::Changes::ReallyStrict::Object->new(
     delete_empty_groups => undef,
     keep_comparing      => undef,
     next_token          => '__',
-    filename            => "$FindBin::Bin/../corpus/Changes_02.txt",
+    filename            => "corpus/Changes_02.txt",
   }
 );
 
