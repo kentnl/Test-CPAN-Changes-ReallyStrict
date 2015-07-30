@@ -1,17 +1,10 @@
 use Test::More;
-use CPAN::Changes;
 
 eval 'use Test::CPAN::Changes::ReallyStrict::Object';
-
 plan skip_all => 'Test::CPAN::Changes::ReallyStrict::Object required for this test' if $@;
 
-local $Test::CPAN::Changes::ReallyStrict::Object::TODO;
-
-if ( eval 'CPAN::Changes->VERSION(q[0.5]); 1' ) {
-  if ( not $ENV{AUTHOR_TESTING} ) {
-    $Test::CPAN::Changes::ReallyStrict::Object::TODO = "CPAN::Changes >= 0.5 is too new for this test";
-  }
-}
+use lib 't/lib';
+use Requires::CCAPI \$Test::CPAN::Changes::ReallyStrict::Object::TODO;
 
 require Text::Wrap;
 $Text::Wrap::columns = 120;

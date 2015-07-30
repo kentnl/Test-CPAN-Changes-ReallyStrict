@@ -23,6 +23,7 @@ my @files = (
     't/04_next_token_oo.t',
     't/99_changes_strict.t',
     't/99_changes_strict_oo.t',
+    't/lib/Requires/CCAPI.pm',
     't/lib/mocktest.pm'
 );
 
