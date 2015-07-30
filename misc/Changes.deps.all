@@ -1,6 +1,8 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
-1.000003
+1.000004
+
+1.000003 2015-07-30T05:03:24Z
  [Removed / test requires]
  - FindBin
 
