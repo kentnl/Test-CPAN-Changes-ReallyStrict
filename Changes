@@ -1,5 +1,7 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
+1.000005 2017-03-07T11:01:50Z fb2ef43
+
 1.000004 2017-03-07T11:00:55Z 8ea097f
  - Bugfix: Avoid test failures with -Ddefault_inc_excludes_dot
 
