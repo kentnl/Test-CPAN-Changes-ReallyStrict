@@ -1,5 +1,12 @@
 Release history for Test-CPAN-Changes-ReallyStrict
 
+1.000004 2017-03-07T11:00:55Z 8ea097f
+ - Bugfix: Avoid test failures with -Ddefault_inc_excludes_dot
+
+ [Dependencies::Stats]
+ - Dependencies changed since 1.000003, see misc/*.deps* for details
+ - develop: +3 ↑2 (suggests: ↑2)
+
 1.000003 2015-07-30T05:03:24Z 14306fe
  [Bugfix]
  - Further narrow the range of versions we do testing on, we missed an important one :(

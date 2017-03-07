@@ -4,7 +4,7 @@ use warnings;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
 
-our $VERSION = '1.000003';
+our $VERSION = '1.000004';
 
 # ABSTRACT: Object Oriented Guts to ::ReallyStrict
 
@@ -311,7 +311,7 @@ Test::CPAN::Changes::ReallyStrict::Object - Object Oriented Guts to ::ReallyStri
 
 =head1 VERSION
 
-version 1.000003
+version 1.000004
 
 =head1 METHODS
 
@@ -413,7 +413,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2015 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2017 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
