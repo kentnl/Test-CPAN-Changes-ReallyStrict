@@ -4,7 +4,7 @@ use warnings;
 
 package Test::CPAN::Changes::ReallyStrict::Object;
 
-our $VERSION = '1.000004';
+our $VERSION = '1.000005';
 
 # ABSTRACT: Object Oriented Guts to ::ReallyStrict
 
